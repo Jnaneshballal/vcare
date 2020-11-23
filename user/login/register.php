@@ -1,3 +1,6 @@
+<?php
+ 
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -50,19 +53,19 @@
                     <form>
                         <div class="form-group">
                             <label>User Name</label>
-                            <input type="email" class="form-control" placeholder="User Name">
+                            <input type="email" class="form-control" placeholder="User Name" name="uname">
                         </div>
                         <div class="form-group">
                             <label>Email address</label>
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input type="email" class="form-control" placeholder="Email" name="email">
                         </div>
                         <div class="form-group">
                             <label>Address</label>
-                            <textarea class="form-control" height="50" placeholder="Address"></textarea>
+                            <textarea class="form-control" height="50" placeholder="Address" name=address></textarea>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" class="form-control" placeholder="Password" name="password">
                         </div>
                         <div class="form-group">
                             <label>Re-Type Password</label>
@@ -73,7 +76,7 @@
                                 <input type="checkbox"> Agree the terms and policy
                             </label>
                         </div> -->
-                        <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
+                        <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" name="register">Register</button>
                         <!-- <div class="social-login-content">
                             <div class="social-button">
                                 <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Register with facebook</button>
@@ -90,10 +93,7 @@
     </div>
 
 
-    <script src="../ui/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../ui/vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../ui/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../ui/assets/js/main.js"></script>
+    <?php include '../ui/jslink.php' ?>
 
 
 </body>
