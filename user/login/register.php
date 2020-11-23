@@ -1,5 +1,20 @@
 <?php
- 
+include 'login/connection.php';
+if(isset($_POST['register']))
+{
+    $uname=$_POST['uname'];
+    $email=$_POST['email'];
+    $address=$_POST['address'];
+    $address=md5($_POST['password']);
+    $qry=mysqli_connect($con,"INSERT into user_info (name,email,address,password) VALUES ('$name','$email','$address','$password') ");
+    if($qry)
+    {
+        $smfg="Regisred Successfully";
+    }
+    else{
+        $fmsg="Error!!";
+    }
+}
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -50,7 +65,7 @@
                         <h3>Register</h3>
                     </div>
                     <hr width="100%" height="50px">
-                    <form>
+                    <form method="POST">
                         <div class="form-group">
                             <label>User Name</label>
                             <input type="email" class="form-control" placeholder="User Name" name="uname">
