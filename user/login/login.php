@@ -9,7 +9,7 @@ if (isset($_POST['login'])) {
     $row = mysqli_fetch_assoc($query);
     if ($check >= 1) {
         $_SESSION['uid'] = $row['uid'];
-        $_SESSION['uname'] = $uname;
+        $_SESSION['uname'] = $row['uname'];
         $smsg = "Login successfull,Redirection in 1 sec..";
         header("refresh:1;url=../index.php");
     } else {

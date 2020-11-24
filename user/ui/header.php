@@ -3,7 +3,7 @@
     <div class="header-menu">
 
          <div class="col-sm-7"> 
-             <label class="hello">Hello,User</label>
+             <label class="hello">Hello,<?php $_SESSION['uname'];?></label>
             <!--<a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
             <div class="header-left">
                 <button class="search-trigger"><i class="fa fa-search"></i></button>
