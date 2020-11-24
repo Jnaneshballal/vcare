@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2020 at 10:19 AM
+-- Generation Time: Nov 24, 2020 at 01:32 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.13
 
@@ -21,6 +21,22 @@ SET time_zone = "+00:00";
 --
 -- Database: `vcare`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `garage`
+--
+
+CREATE TABLE `garage` (
+  `gid` int(75) NOT NULL,
+  `gname` varchar(100) NOT NULL,
+  `gemail` varchar(100) NOT NULL,
+  `gphone` varchar(100) NOT NULL,
+  `gaddress` varchar(300) NOT NULL,
+  `gpin` varchar(100) NOT NULL,
+  `gpassword` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -48,6 +64,12 @@ INSERT INTO `user` (`uid`, `uname`, `email`, `address`, `password`) VALUES
 --
 
 --
+-- Indexes for table `garage`
+--
+ALTER TABLE `garage`
+  ADD PRIMARY KEY (`gid`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -56,6 +78,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `garage`
+--
+ALTER TABLE `garage`
+  MODIFY `gid` int(75) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
