@@ -10,14 +10,14 @@ if (isset($_POST['register'])) {
 	$query = mysqli_query($con, "SELECT * FROM garage WHERE gemail='$gemail'");
 	$count=mysqli_num_rows($query);
 	if ($count > 0) {
-		$emsg = mysqli_error($con);
+		$emsg = "Garage already exists";
 	} else {
 		$insert_Query = mysqli_query($con, "INSERT INTO garage (gname,gemail,gphone,gaddress,gpin,gpassword) VALUES ('$gname','$gemail','$gphone','$gaddress','$gpin','$gpassword')");
 		if ($insert_Query) {
-			// header("refresh:1;url=./shoplogin.php");
+			header("refresh:1;url=./shoplogin.php");
 			$smsg = "Registerd Successfully redirecting ......";
 		} else {
-			$emsg = mysqli_error($con);
+			$emsg = "ERROR !!!";
 		}
 	}
 }
@@ -71,15 +71,18 @@ if (isset($_POST['register'])) {
 								</div>
 							</div>
 						</div>
+			
+
 						<div class="form-group">
 							<label for="exampleInputEmailId" class="sr-only">Email ID</label>
 							<div class="position-relative has-icon-right">
-								<input type="email"  class="form-control input-shadow" placeholder="Enter Garage Email ID" name="gemail">
+								<input type="text" class="form-control input-shadow" placeholder="Enter Garage Email ID" name="gemail">
 								<div class="form-control-position">
 									<i class="icon-envelope-open"></i>
 								</div>
 							</div>
 						</div>
+
 						<div class="form-group">
 							<label for="exampleInputEmailId" class="sr-only">Phone Number</label>
 							<div class="position-relative has-icon-right">
@@ -92,7 +95,7 @@ if (isset($_POST['register'])) {
 						<div class="form-group">
 							<label for="exampleInputEmailId" class="sr-only">Address</label>
 							<div class="position-relative has-icon-right">
-								<textarea id="exampleInputEmailId" height="50" class="form-control input-shadow" placeholder="Enter address" name="gaddress"></textarea>
+								<textarea id="exampleInputEmailId" height="50" class="form-control input-shadow" placeholder="Enter the address" name="gaddress"></textarea>
 								<div class="form-control-position">
 									<i class="icon-envelope-open"></i>
 								</div>
