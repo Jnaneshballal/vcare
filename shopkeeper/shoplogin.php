@@ -68,7 +68,7 @@
 		   </div>
 		  </div>
 		  <div class="card-footer text-center py-3">
-		    <p class="text-warning mb-0">Do not have an account? <a href="register.html"> Sign Up here</a></p>
+		    <p class="text-warning mb-0">Do not have an account? <a href="shopregister.php"> Sign Up here</a></p>
 		  </div>
 	     </div>
     

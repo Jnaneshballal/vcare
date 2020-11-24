@@ -1,22 +1,23 @@
 <?php
 include '../global/connection.php';
 if (isset($_POST['register'])) {
-	$gname = $_POST['uname'];
+	$gname = $_POST['gname'];
 	$gemail = $_POST['gemail'];
 	$gphone = $_POST['gphone'];
 	$gaddress = $_POST['gaddress'];
 	$gpin = $_POST['gpin'];
-	$gpassword = $_POST['gpassword'];
+	$gpassword = md5($_POST['gpassword']);
 	$query = mysqli_query($con, "SELECT * FROM garage WHERE gemail='$gemail'");
-	if ($query > 0) {
-		$emsg = "Garage already registered";
+	$count=mysqli_num_rows($query);
+	if ($count > 0) {
+		$emsg = mysqli_error($con);
 	} else {
 		$insert_Query = mysqli_query($con, "INSERT INTO garage (gname,gemail,gphone,gaddress,gpin,gpassword) VALUES ('$gname','$gemail','$gphone','$gaddress','$gpin','$gpassword')");
 		if ($insert_Query) {
-			header("refresh:1;url=./shoplogin.php");
-			$msg = "Registerd Successfully redirecting ......";
+			// header("refresh:1;url=./shoplogin.php");
+			$smsg = "Registerd Successfully redirecting ......";
 		} else {
-			echo mysqli_error($con);
+			$emsg = mysqli_error($con);
 		}
 	}
 }
@@ -47,19 +48,24 @@ if (isset($_POST['register'])) {
 			<div class="card-body">
 				<div class="card-content p-6">
 					<div class="text-center">
-						<img src="assets/images/logo-icon.png" alt="logo icon">
+						<!-- <img src="assets/images/logo-icon.png" alt="logo icon"> -->
 					</div>
+
 					<div class="card-title text-uppercase text-center py-3">Sign Up</div>
-					<?php if (isset($msg)) {
-						echo $msg;
+					<?php if (isset($emsg)) {
+						echo $emsg;
 					}
 					?>
-
+					<?php if (isset($smsg)) {
+						echo $smsg;
+					}
+					?>
 					<form method="POST">
+
 						<div class="form-group">
 							<label for="exampleInputName" class="sr-only">Garage Name</label>
 							<div class="position-relative has-icon-right">
-								<input type="text" id="exampleInputName" class="form-control input-shadow" placeholder="Enter Your  Garage Name" name="gname">
+								<input type="text" class="form-control input-shadow" placeholder="Enter Your  Garage Name" name="gname">
 								<div class="form-control-position">
 									<i class="icon-user"></i>
 								</div>
@@ -68,7 +74,7 @@ if (isset($_POST['register'])) {
 						<div class="form-group">
 							<label for="exampleInputEmailId" class="sr-only">Email ID</label>
 							<div class="position-relative has-icon-right">
-								<input type="text" id="exampleInputEmailId" class="form-control input-shadow" placeholder="Enter Garage Email ID" name="gemail">
+								<input type="email"  class="form-control input-shadow" placeholder="Enter Garage Email ID" name="gemail">
 								<div class="form-control-position">
 									<i class="icon-envelope-open"></i>
 								</div>
@@ -77,7 +83,7 @@ if (isset($_POST['register'])) {
 						<div class="form-group">
 							<label for="exampleInputEmailId" class="sr-only">Phone Number</label>
 							<div class="position-relative has-icon-right">
-								<input type="text" id="exampleInputEmailId" class="form-control input-shadow" placeholder="Enter Conteact Number" name="gphone">
+								<input type="text"  class="form-control input-shadow" placeholder="Enter Conteact Number" name="gphone">
 								<div class="form-control-position">
 									<i class="icon-envelope-open"></i>
 								</div>
@@ -104,7 +110,7 @@ if (isset($_POST['register'])) {
 						<div class="form-group">
 							<label for="exampleInputPassword" class="sr-only">Password</label>
 							<div class="position-relative has-icon-right">
-								<input type="text" id="exampleInputPassword" class="form-control input-shadow" placeholder="Choose Password" namw="gpassword">
+								<input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Choose Password" name="gpassword">
 								<div class="form-control-position">
 									<i class="icon-lock"></i>
 								</div>
@@ -118,10 +124,11 @@ if (isset($_POST['register'])) {
 			     </div>
 			    </div> -->
 
-						<button type="button" class="btn btn-light btn-block waves-effect waves-light" name="register">Sign Up</button>
-						<!-- <div class="text-center mt-3">Sign Up With</div> -->
+						<button type="submit" class="btn btn-light btn-block waves-effect waves-light" name="register">Sign Up</button>
+					</form>
+					<!-- <div class="text-center mt-3">Sign Up With</div> -->
 
-						<!-- <div class="form-row mt-4">
+					<!-- <div class="form-row mt-4">
 			  <div class="form-group mb-0 col-6">
 			   <button type="button" class="btn btn-light btn-block"><i class="fa fa-facebook-square"></i> Facebook</button>
 			 </div>
@@ -130,20 +137,20 @@ if (isset($_POST['register'])) {
 			 </div>
 			</div> -->
 
-					</form>
+
 				</div>
 			</div>
 			<div class="card-footer text-center py-3">
-				<p class="text-warning mb-0">Already have an account? <a href="login.html"> Sign In here</a></p>
+				<p class="text-warning mb-0">Already have an account? <a href="shoplogin.php"> Sign In here</a></p>
 			</div>
 		</div>
 
 		<!--Start Back To Top Button-->
-		<a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+		<!-- <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a> -->
 		<!--End Back To Top Button-->
 
 		<!--start color switcher-->
-		<div class="right-sidebar">
+		<!-- <div class="right-sidebar">
 			<div class="switcher-icon">
 				<i class="zmdi zmdi-settings zmdi-hc-spin"></i>
 			</div>
@@ -177,7 +184,7 @@ if (isset($_POST['register'])) {
 				</ul>
 
 			</div>
-		</div>
+		</div> -->
 		<!--end color switcher-->
 
 	</div>
