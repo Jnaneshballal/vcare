@@ -1,18 +1,22 @@
 <?php
-include 'login/connection.php';
-if(isset($_POST['register']))
-{
-    $uname=$_POST['uname'];
-    $email=$_POST['email'];
-    $address=$_POST['address'];
-    $address=md5($_POST['password']);
-    $qry=mysqli_connect($con,"INSERT into user_info (name,email,address,password) VALUES ('$name','$email','$address','$password') ");
-    if($qry)
-    {
-        $smfg="Regisred Successfully";
-    }
-    else{
-        $fmsg="Error!!";
+include './connection.php';
+if (isset($_POST['register'])) {
+    $uname = $_POST['uname'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $password = md5($_POST['password']);
+    $query = mysqli_query($con, "SELECT * FROM user WHERE email='$email'");
+    $count = mysqli_num_rows($query);
+    if ($count > 0) {
+        $emsg = "User Already registered";
+    } else {
+        $insert_Query = mysqli_query($con, "INSERT INTO user (uname,email,address,password) VALUES ('$uname','$email','$address','$password')");
+        if ($insert_Query) {
+            header("refresh:1;url=./login.php");
+            $smsg = "Registred Successfully.Redirecting....";
+        } else {
+            $emsg = "Error!!!";
+        }
     }
 }
 ?>
@@ -25,9 +29,10 @@ if(isset($_POST['register']))
 <!--<![endif]-->
 
 <head>
+    <title>Register</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Register</title>
+
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -44,9 +49,6 @@ if(isset($_POST['register']))
     <link rel="stylesheet" href="../ui/assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
-
-
 </head>
 
 <body class="bg-dark">
@@ -65,10 +67,28 @@ if(isset($_POST['register']))
                         <h3>Register</h3>
                     </div>
                     <hr width="100%" height="50px">
+                    <?php if (isset($smsg)) { ?>
+                        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                            <span class="badge badge-pill badge-success">Success</span>
+                            <?php echo $smsg ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    <?php } ?>
+                    <?php if (isset($emsg)) { ?>
+                        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                            <span class="badge badge-pill badge-danger">Error!!</span>
+                            <?php echo $emsg ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    <?php } ?>
                     <form method="POST">
                         <div class="form-group">
                             <label>User Name</label>
-                            <input type="email" class="form-control" placeholder="User Name" name="uname">
+                            <input type="text" class="form-control" placeholder="User Name" name="uname">
                         </div>
                         <div class="form-group">
                             <label>Email address</label>
@@ -76,7 +96,7 @@ if(isset($_POST['register']))
                         </div>
                         <div class="form-group">
                             <label>Address</label>
-                            <textarea class="form-control" height="50" placeholder="Address" name=address></textarea>
+                            <textarea class="form-control" height="50" placeholder="Address" name="address"></textarea>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
