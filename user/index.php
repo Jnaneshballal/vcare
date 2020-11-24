@@ -25,7 +25,7 @@ if(!$login){
         <div class="content mt-3">
             <div class="col-sm-12">
                 <div class="alert alert-primary" role="alert">
-                    You haven't registered any vehicle <a href="#" class="alert-link">"click here to Register"</a>.
+                    You haven't registered any vehicle <a href="add-vehicle.php" class="alert-link">"click here to Register"</a>.
                 </div>
                 <!-- <div class="alert  alert-success alert-dismissible fade show" role="alert">
                     <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert message.

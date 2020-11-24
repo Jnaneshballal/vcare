@@ -1,5 +1,5 @@
 <?php
-include './connection.php';
+include '../../global/connection.php';
 if (isset($_POST['register'])) {
     $uname = $_POST['uname'];
     $email = $_POST['email'];
