@@ -1,3 +1,11 @@
+<?php
+include '../global/useraccesscontrol.php';
+
+if(!$login){
+    //if user not logged in
+    echo "not loggedin";
+}
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->

@@ -1,15 +1,9 @@
-<?php
-session_start();
-if(isset($_SESSION['uname'])){
-    $user=$_SESSION['uname'];
-}
-?>
 <header id="header" class="header">
 
     <div class="header-menu">
 
          <div class="col-sm-7"> 
-             <label class="hello">Hello,<?php echo $user; ?></label>
+             <label class="hello">Hello,<?php echo $global_uname; ?></label>
             <!--<a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
             <div class="header-left">
                 <button class="search-trigger"><i class="fa fa-search"></i></button>
@@ -99,7 +93,7 @@ if(isset($_SESSION['uname'])){
 
                     <!-- <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a> -->
 
-                    <a class="nav-link" href="./login/logout.php"><i class="fa fa-power-off"></i> Logout</a>
+                    <a class="nav-link" href="../global/logout.php"><i class="fa fa-power-off"></i> Logout</a>
                 </div>
             </div>
 

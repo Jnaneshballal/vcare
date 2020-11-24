@@ -1,5 +1,6 @@
 <?php
-include 'connection.php';
+include '../../global/connection.php';
+
 session_start();
 if (isset($_POST['login'])) {
     $uname = $_POST['uname'];
