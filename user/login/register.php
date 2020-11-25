@@ -4,13 +4,15 @@ if (isset($_POST['register'])) {
     $uname = $_POST['uname'];
     $email = $_POST['email'];
     $address = $_POST['address'];
+    $ucity = $_POST['ucity'];
+    $upin = $_POST['upin'];
     $password = md5($_POST['password']);
     $query = mysqli_query($con, "SELECT * FROM user WHERE email='$email'");
     $count = mysqli_num_rows($query);
     if ($count > 0) {
         $emsg = "User Already registered";
     } else {
-        $insert_Query = mysqli_query($con, "INSERT INTO user (uname,email,address,password) VALUES ('$uname','$email','$address','$password')");
+        $insert_Query = mysqli_query($con, "INSERT INTO user (uname,email,address,ucity,upin,password) VALUES ('$uname','$email','$address','$ucity','$upin','$password')");
         if ($insert_Query) {
             header("refresh:1;url=./login.php");
             $smsg = "Registred Successfully.Redirecting....";
@@ -97,6 +99,14 @@ if (isset($_POST['register'])) {
                         <div class="form-group">
                             <label>Address</label>
                             <textarea class="form-control" height="50" placeholder="Address" name="address"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" class="form-control" placeholder="User Name" name="ucity">
+                        </div>
+                        <div class="form-group">
+                            <label>Pin</label>
+                            <input type="number" class="form-control" placeholder="User Name" name="upin">
                         </div>
                         <div class="form-group">
                             <label>Password</label>

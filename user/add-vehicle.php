@@ -23,7 +23,7 @@ include '../global/useraccesscontrol.php';
                     <strong>Vehicle Registration</strong>
                 </div>
                 <div class="card-body card-block">
-                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form method="post" enctype="multipart/form-data" class="form-horizontal">
                         <div class="row form-group">
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Vehicle Owner Name</label></div>
                             <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="owner name" class="form-control"></div>
