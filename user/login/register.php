@@ -2,22 +2,22 @@
 include '../../global/connection.php';
 if (isset($_POST['register'])) {
     $uname = $_POST['uname'];
-    $email = $_POST['email'];
-    $address = $_POST['address'];
+    $uemail = $_POST['uemail'];
+    $uaddress = $_POST['uaddress'];
     $ucity = $_POST['ucity'];
     $upin = $_POST['upin'];
-    $password = md5($_POST['password']);
-    $query = mysqli_query($con, "SELECT * FROM user WHERE email='$email'");
+    $upassword = md5($_POST['upassword']);
+    $query = mysqli_query($con, "SELECT * FROM user WHERE uemail='$uemail'");
     $count = mysqli_num_rows($query);
     if ($count > 0) {
         $emsg = "User Already registered";
     } else {
-        $insert_Query = mysqli_query($con, "INSERT INTO user (uname,email,address,ucity,upin,password) VALUES ('$uname','$email','$address','$ucity','$upin','$password')");
+        $insert_Query = mysqli_query($con, "INSERT INTO user_info (uname,uemail,uaddress,ucity,upin,upassword) VALUES ('$uname','$uemail','$uaddress','$ucity','$upin','$upassword')");
         if ($insert_Query) {
             header("refresh:1;url=./login.php");
             $smsg = "Registred Successfully.Redirecting....";
         } else {
-            $emsg = "Error!!!";
+            $emsg = "Error!!";
         }
     }
 }
@@ -94,11 +94,11 @@ if (isset($_POST['register'])) {
                         </div>
                         <div class="form-group">
                             <label>Email address</label>
-                            <input type="email" class="form-control" placeholder="Email" name="email">
+                            <input type="email" class="form-control" placeholder="Email" name="uemail">
                         </div>
                         <div class="form-group">
                             <label>Address</label>
-                            <textarea class="form-control" height="50" placeholder="Address" name="address"></textarea>
+                            <textarea class="form-control" height="50" placeholder="Address" name="uaddress"></textarea>
                         </div>
                         <div class="form-group">
                             <label>City</label>
@@ -110,7 +110,7 @@ if (isset($_POST['register'])) {
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password" name="password">
+                            <input type="password" class="form-control" placeholder="Password" name="upassword">
                         </div>
                         <div class="form-group">
                             <label>Re-Type Password</label>

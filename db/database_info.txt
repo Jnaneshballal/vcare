@@ -1,0 +1,3 @@
+link: https://auth-db165.hostinger.com/sql.php?db=u475183641_vcare
+uname: u475183641_vcadmin
+password: vcareDB1

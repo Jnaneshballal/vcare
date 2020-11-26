@@ -7,7 +7,7 @@ $vchassino=$_POST['vchassino'];
 $vmodel=$_POST['vmodel'];
 $vemissiondate=$_POST['vemissiondate'];
 $vinsureexdate=$_POST['vinsureexdate'];
-$query=mysqli_query($con,"")
+$query=mysqli_query($con,"INSERT INTO vehicle_info(vuid,vownername,vno,engineno,vchassino,vmodel,vemissiondate,vinsureexdate)VALUES('$global_uid','$vownername','$vno','$engineno','$vchassino','$vmodel','$vemissiondate','$vinsureexdate')")
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
