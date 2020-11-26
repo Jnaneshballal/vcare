@@ -12,7 +12,7 @@ if (isset($_POST['register'])) {
 	if ($count > 0) {
 		$emsg = "Garage already exists";
 	} else {
-		$insert_Query = mysqli_query($con, "INSERT INTO garage (gname,gemail,gphone,gaddress,gpin,gpassword) VALUES ('$gname','$gemail','$gphone','$gaddress','$gpin','$gpassword')");
+		$insert_Query = mysqli_query($con, "INSERT INTO garage (gname,gemail,gphone,gaddress,gcity,gpassword) VALUES ('$gname','$gemail','$gphone','$gaddress','$gcity','$gpassword')");
 		if ($insert_Query) {
 			header("refresh:1;url=./shoplogin.php");
 			$smsg = "Registerd Successfully redirecting ......";
@@ -102,9 +102,9 @@ if (isset($_POST['register'])) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmailId" class="sr-only">Address Pin Code</label>
+							<label for="exampleInputEmailId" class="sr-only">City</label>
 							<div class="position-relative has-icon-right">
-								<input type="text" id="exampleInputEmailId" class="form-control input-shadow" placeholder="Enter Address Pin Code" name="gpin">
+								<input type="text" id="exampleInputEmailId" class="form-control input-shadow" placeholder="Enter City" name="gcity">
 								<div class="form-control-position">
 									<i class="icon-envelope-open"></i>
 								</div>
