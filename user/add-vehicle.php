@@ -1,14 +1,18 @@
 <?php
 include '../global/useraccesscontrol.php';
+if(!$login)
+{
+    header("url=./login.php");
+}
 if (isset($_POST['success'])) {
     $vownername = $_POST['vownername'];
     $vno = $_POST['vno'];
     $vengineno = $_POST['vengineno'];
     $vchassino = $_POST['vchassino'];
     $vmodel = $_POST['vmodel'];
-    $vemissiondate = $_POST['vemissiondate'];
+    $vemissionexdate = $_POST['vemissionexdate'];
     $vinsureexdate = $_POST['vinsureexdate'];
-    $query = mysqli_query($con, "INSERT INTO vehicle_info(vuid,vownername,vno,vengineno,vchassino,vmodel,vemissiondate,vinsureexdate)VALUES('$global_uid','$vownername','$vno','$engineno','$vchassino','$vmodel','$vemissiondate','$vinsureexdate')");
+    $query = mysqli_query($con, "INSERT INTO vehicle_info(vuid,vownername,vno,vengineno,vchassino,vmodel,vemissionexdate,vinsureexdate)VALUES('$global_uid','$vownername','$vno','$vengineno','$vchassino','$vmodel','$vemissionexdate','$vinsureexdate')");
     if ($query) {
         $smsg = "Vehicle Registered";
     } else {
@@ -79,7 +83,7 @@ if (isset($_POST['success'])) {
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label for="password-input" class=" form-control-label">Emission Expire Date</label></div>
-                            <div class="col-12 col-md-9"><input type="Date" id="password-input" name="vemissiondate" placeholder="date" class="form-control"></div>
+                            <div class="col-12 col-md-9"><input type="Date" id="password-input" name="vemissionexdate" placeholder="date" class="form-control"></div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Insurance Expire Date</label></div>
@@ -87,8 +91,8 @@ if (isset($_POST['success'])) {
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-sm">
-                            <i class="fa fa-dot-circle-o" name="success"></i> Register
+                        <button type="submit" class="btn btn-primary btn-sm" name="success">
+                            <i class="fa fa-dot-circle-o"></i> Register
                         </button>
                         <button type="reset" class="btn btn-danger btn-sm">
                             <i class="fa fa-ban"></i> Reset
