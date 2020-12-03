@@ -1,13 +1,20 @@
 <?php
 include '../global/useraccesscontrol.php';
-$vownername=$_POST['vownername'];
-$vno=$_POST['vno'];
-$engineno=$_POST['engineno'];
-$vchassino=$_POST['vchassino'];
-$vmodel=$_POST['vmodel'];
-$vemissiondate=$_POST['vemissiondate'];
-$vinsureexdate=$_POST['vinsureexdate'];
-$query=mysqli_query($con,"INSERT INTO vehicle_info(vuid,vownername,vno,engineno,vchassino,vmodel,vemissiondate,vinsureexdate)VALUES('$global_uid','$vownername','$vno','$engineno','$vchassino','$vmodel','$vemissiondate','$vinsureexdate')")
+if (isset($_POST['success'])) {
+    $vownername = $_POST['vownername'];
+    $vno = $_POST['vno'];
+    $vengineno = $_POST['vengineno'];
+    $vchassino = $_POST['vchassino'];
+    $vmodel = $_POST['vmodel'];
+    $vemissiondate = $_POST['vemissiondate'];
+    $vinsureexdate = $_POST['vinsureexdate'];
+    $query = mysqli_query($con, "INSERT INTO vehicle_info(vuid,vownername,vno,vengineno,vchassino,vmodel,vemissiondate,vinsureexdate)VALUES('$global_uid','$vownername','$vno','$engineno','$vchassino','$vmodel','$vemissiondate','$vinsureexdate')");
+    if ($query) {
+        $smsg = "Vehicle Registered";
+    } else {
+        $emsg = mysqli_error($con);
+    }
+}
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -30,19 +37,37 @@ $query=mysqli_query($con,"INSERT INTO vehicle_info(vuid,vownername,vno,engineno,
                 <div class="card-header">
                     <strong>Vehicle Registration</strong>
                 </div>
-                <div class="card-body card-block">
-                    <form method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form method="POST" class="form-horizontal">
+                    <div class="card-body card-block">
+                        <?php if (isset($smsg)) { ?>
+                            <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                                <span class="badge badge-pill badge-success">Success</span>
+                                <?php echo $smsg ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                        <?php } ?>
+                        <?php if (isset($emsg)) { ?>
+                            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                                <span class="badge badge-pill badge-danger">Error!!</span>
+                                <?php echo $emsg ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                        <?php } ?>
                         <div class="row form-group">
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Vehicle Owner Name</label></div>
                             <div class="col-12 col-md-9"><input type="text" id="text-input" name="vownername" placeholder="owner name" class="form-control"></div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label for="email-input" class=" form-control-label">Vehicle Number</label></div>
-                            <div class="col-12 col-md-9"><input type="email" id="email-input" name="vno" placeholder="eg : KA-19-MG-2019" class="form-control"></div>
+                            <div class="col-12 col-md-9"><input type="text" id="email-input" name="vno" placeholder="eg : KA-19-MG-2019" class="form-control"></div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Engine Number</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="engineno" placeholder="engine no." class="form-control"></div>
+                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="vengineno" placeholder="engine no." class="form-control"></div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Chassis Number</label></div>
@@ -60,16 +85,16 @@ $query=mysqli_query($con,"INSERT INTO vehicle_info(vuid,vownername,vno,engineno,
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Insurance Expire Date</label></div>
                             <div class="col-12 col-md-9"><input type="date" id="text-input" name="vinsureexdate" placeholder="date" class="form-control"></div>
                         </div>
-                    </form>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary btn-sm">
-                        <i class="fa fa-dot-circle-o" name="submit"></i> Submit
-                    </button>
-                    <button type="reset" class="btn btn-danger btn-sm">
-                        <i class="fa fa-ban"></i> Reset
-                    </button>
-                </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o" name="success"></i> Register
+                        </button>
+                        <button type="reset" class="btn btn-danger btn-sm">
+                            <i class="fa fa-ban"></i> Reset
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
         <?php include 'ui/jslink.php' ?>

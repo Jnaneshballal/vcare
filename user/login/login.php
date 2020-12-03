@@ -4,7 +4,7 @@ session_start();
 if (isset($_POST['login'])) {
     $uname = $_POST['uname'];
     $psw = md5($_POST['psw']);
-    $query = mysqli_query($con, "SELECT * FROM user WHERE (uname='$uname' OR email='$uname') AND password='$psw' ");
+    $query = mysqli_query($con, "SELECT * FROM user_info WHERE (uname='$uname' OR uemail='$uname') AND upassword='$psw' ");
     $check = mysqli_num_rows($query);
     $row = mysqli_fetch_assoc($query);
     if ($check >= 1) {

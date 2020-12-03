@@ -7,17 +7,22 @@ if (isset($_POST['register'])) {
     $ucity = $_POST['ucity'];
     $upin = $_POST['upin'];
     $upassword = md5($_POST['upassword']);
-    $query = mysqli_query($con, "SELECT * FROM user WHERE uemail='$uemail'");
-    $count = mysqli_num_rows($query);
-    if ($count > 0) {
-        $emsg = "User Already registered";
+    $cpassword = md5($_POST['upassword']);
+    if ($upassword != $cpassword) {
+        $emsg = "Password Not Matching!!";
     } else {
-        $insert_Query = mysqli_query($con, "INSERT INTO user_info (uname,uemail,uaddress,ucity,upin,upassword) VALUES ('$uname','$uemail','$uaddress','$ucity','$upin','$upassword')");
-        if ($insert_Query) {
-            header("refresh:1;url=./login.php");
-            $smsg = "Registred Successfully.Redirecting....";
+        $query = mysqli_query($con, "SELECT * FROM user WHERE uemail='$uemail'");
+        $count = mysqli_num_rows($query);
+        if ($count > 0) {
+            $emsg = "User Already registered";
         } else {
-            $emsg = "Error!!";
+            $insert_Query = mysqli_query($con, "INSERT INTO user_info (uname,uemail,uaddress,ucity,upin,upassword) VALUES ('$uname','$uemail','$uaddress','$ucity','$upin','$upassword')");
+            if ($insert_Query) {
+                header("refresh:1;url=./login.php");
+                $smsg = "Registred Successfully.Redirecting....";
+            } else {
+                $emsg = "Error!!";
+            }
         }
     }
 }
@@ -102,11 +107,11 @@ if (isset($_POST['register'])) {
                         </div>
                         <div class="form-group">
                             <label>City</label>
-                            <input type="text" class="form-control" placeholder="User Name" name="ucity">
+                            <input type="text" class="form-control" placeholder="City" name="ucity">
                         </div>
                         <div class="form-group">
                             <label>Pin</label>
-                            <input type="number" class="form-control" placeholder="User Name" name="upin">
+                            <input type="number" class="form-control" placeholder="Postal code" name="upin">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
