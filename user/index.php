@@ -60,7 +60,7 @@ if ($v_count >= 1) {
 
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
-                                            <i class="fa fa-user"></i> Owner Name <span class="badge pull-right"><?php echo $info['vownername'];?></span>
+                                            <i class="fa fa-user"></i> Owner Name <span class="badge pull-right"><?php echo strtoupper($info['vownername']);?></span>
                                         </li>
                                         <li class="list-group-item">
                                              <i class="fa fa-calendar"></i> Emission Expire Date <span class="badge badge-danger pull-right"><?php echo $info['vemissionexdate'];?></span>
