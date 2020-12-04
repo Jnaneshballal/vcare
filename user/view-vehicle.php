@@ -4,11 +4,7 @@ if (!$login) {
     echo "<script>window.location.href='login/login.php'; </script>";
 }
 $fetch_info = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vuid=$global_uid");
-if(isset($_POST['ydel'])){
-
-}
-if(isset($_POST['update'])){
-
+if (isset($_POST['update'])) {
 }
 ?>
 <!doctype html>
@@ -27,7 +23,8 @@ if(isset($_POST['update'])){
     <?php include 'ui/leftbar.php'; ?>
     <div id="right-panel" class="right-panel">
         <?php include 'ui/header.php' ?>
-        <?php while ($info = mysqli_fetch_assoc($fetch_info)) { ?>
+        <?php while ($info = mysqli_fetch_assoc($fetch_info)) {
+        ?>
             <div class="col-md-4">
                 <aside class="profile-nav alt">
                     <section class="card">
@@ -81,16 +78,18 @@ if(isset($_POST['update'])){
                         </div>
                         <div class="modal-body">
                             <p>
-                                Are you sure you want to DELETE!!!..
+                                Are you sure you want to DELETE the vehicle <?php echo $vno; ?> ?
                             </p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-success" name="ydel"><i class="fa fa-check"> Yes</i></button>
+                            <button type="submit" class="btn btn-success" name="ydel"><i class="fa fa-check"> Yes</i></button>
                         </div>
                     </div>
                 </div>
             </div>
+        </form>
+        <form method="POST">
             <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true" data-backdrop="static">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
