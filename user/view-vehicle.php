@@ -4,10 +4,6 @@ if (!$login) {
     echo "<script>window.location.href='login/login.php'; </script>";
 }
 $fetch_info = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vuid=$global_uid");
-// if (isset($_POST['ydel'])) {
-//     $vid=$_POST['vhid'];
-//     $del_query=mysqli_query($con,"DELETE FROM vehicle_info WHERE vid=$vid");
-// }
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
