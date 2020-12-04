@@ -5,7 +5,7 @@ if (isset($_POST['register'])) {
 	$gemail = $_POST['gemail'];
 	$gphone = $_POST['gphone'];
 	$gaddress = $_POST['gaddress'];
-	$gpin = $_POST['gpin'];
+	$gcity = $_POST['gcity'];
 	$gpassword = md5($_POST['gpassword']);
 	$query = mysqli_query($con, "SELECT * FROM garage WHERE gemail='$gemail'");
 	$count=mysqli_num_rows($query);
