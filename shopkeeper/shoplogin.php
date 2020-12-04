@@ -22,7 +22,7 @@ if (isset($_POST['login'])) {
 <html lang="en">
 
 <head>
-	<?php include './assets/csslink.php'; ?>
+	<?php include './ui/csslink.php'; ?>
 </head>
 
 <body class="bg-theme bg-theme1">
