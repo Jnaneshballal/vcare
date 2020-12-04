@@ -101,6 +101,7 @@ if (isset($_POST['success'])) {
                 </form>
             </div>
         </div>
+    </div>
         <?php include 'ui/jslink.php' ?>
 </body>
 

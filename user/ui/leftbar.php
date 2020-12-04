@@ -41,7 +41,10 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
                         <ul class="sub-menu children dropdown-menu"> -->
-                            <li><a href="add-vehicle.php">Add Vehicle</a></li> 
+                            <li><a href="add-vehicle.php">|<i class="fa fa-plus"></i>| Add Vehicle</a></li>
+                            <li><a href="view-vehicle.php">|<i class="fa fa-car"></i>| View Vehicle</a></li>
+                            <li><a href="#">|<i class="fa fa-phone"></i>| S.O.S</a></li>
+                            <li><a href="#">|<i class="fa fa-wrench"></i>| Vehicle Service</a></li> 
                             <!-- <li></i><a href="forms-advanced.html">Advanced Form</a></li> -->
                         <!-- </ul>
                     </li> -->

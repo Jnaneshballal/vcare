@@ -2,17 +2,15 @@
 include '../global/useraccesscontrol.php';
 if (!$login) {
     //if user not logged in
-    header("refresh:1;url=login/login.php");
+    echo "<script>window.location.href='login/login.php'; </script>";
 }
-$vehicle_query=mysqli_query($con,"SELECT * FROM vehicle_info WHERE vuid='$global_uid'");
-$v_count=mysqli_num_rows($vehicle_query);
-$vehicle=false;
-if($v_count>=1)
-{
-    $vehicle=false;
-}
-else{
-    $vehicle=true;
+$vehicle_query = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vuid='$global_uid'");
+$v_count = mysqli_num_rows($vehicle_query);
+$vehicle = false;
+if ($v_count >= 1) {
+    $vehicle = false;
+} else {
+    $vehicle = true;
 }
 ?>
 <!doctype html>
@@ -33,47 +31,53 @@ else{
         <?php include 'ui/header.php' ?>
         <div class="content mt-3">
             <div class="col-sm-12">
-                <?php if($vehicle){ ?>
-                <div class="alert alert-primary" role="alert">
-                    You haven't registered any vehicle <a href="add-vehicle.php" class="alert-link">"click here to Register"</a>.
-                </div>
+                <?php if ($vehicle) { ?>
+                    <div class="alert alert-primary" role="alert">
+                        You haven't registered any vehicle <a href="add-vehicle.php" class="alert-link">"click here to Register"</a>.
+                    </div>
                 <?php } ?>
-                <?php if(!$vehicle){?>
-                <div class="col-md-4">
-                    <aside class="profile-nav alt">
-                        <section class="card">
-                            <div class="card-header user-header alt bg-dark">
-                                <div class="media">
-                                    <a href="#">
-                                        <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="ui/images/admin.jpg">
-                                    </a>
-                                    <div class="media-body">
-                                        <h2 class="text-light display-6">Jim Doe</h2>
-                                        <p>Project Manager</p>
+                <?php if (!$vehicle) {
+                    $fetch_info = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vuid=$global_uid");
+                    // $count=mysqli_num_rows($fetch_info);
+                    
+                    while ($info = mysqli_fetch_assoc($fetch_info)) {
+                ?>
+                        <div class="col-md-4">
+                            <aside class="profile-nav alt">
+                                <section class="card">
+                                    <div class="card-header user-header alt bg-dark">
+                                        <div class="media">
+                                            <a href="#">
+                                                <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="ui/images/admin.jpg">
+                                            </a>
+                                            <div class="media-body">
+                                                <h2 class="text-light display-6"><?php echo $info['vmodel'];?></h2>
+                                                <p><?php echo $info['vno'];?></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
 
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <a href="#"> <i class="fa fa-envelope-o"></i> Mail Inbox <span class="badge badge-primary pull-right">10</span></a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#"> <i class="fa fa-tasks"></i> Recent Activity <span class="badge badge-danger pull-right">15</span></a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#"> <i class="fa fa-bell-o"></i> Notification <span class="badge badge-success pull-right">11</span></a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#"> <i class="fa fa-comments-o"></i> Message <span class="badge badge-warning pull-right r-activity">03</span></a>
-                                </li>
-                            </ul>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <i class="fa fa-user"></i> Owner Name <span class="badge pull-right"><?php echo $info['vownername'];?></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                             <i class="fa fa-calendar"></i> Emission Expire Date <span class="badge badge-danger pull-right"><?php echo $info['vemissionexdate'];?></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                             <i class="fa fa-calendar"></i> Insurance Expire Date <span class="badge badge-danger pull-right"><?php echo $info['vinsureexdate'];?></span>
+                                        </li>
+                                        <!-- <li class="list-group-item">
+                                             <i class="fa fa-comments-o"></i> Message <span class="badge badge-warning pull-right r-activity">03</span>
+                                        </li> -->
+                                    </ul>
 
-                        </section>
-                    </aside>
-                </div>
-                <?php } ?>
+                                </section>
+                            </aside>
+                        </div>
+                <?php }
+                } ?>
                 <!-- <div class="alert  alert-success alert-dismissible fade show" role="alert">
                     <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert message.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
