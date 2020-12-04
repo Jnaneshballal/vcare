@@ -1,10 +1,10 @@
-<?php
-include '.ui/global/connection.php';
-if(!$login){
-  echo "<script>window.location.href='./shoplogin.php'; </script>";
-}
+<!-- <?php
+// include '.ui/global/connection.php';
+// if(!$login){
+//   echo "<script>window.location.href='./shoplogin.php'; </script>";
+// }
 
-?>
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">
