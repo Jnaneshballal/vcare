@@ -1,10 +1,10 @@
-<!-- <?php
-// include '.ui/global/connection.php';
-// if(!$login){
-//   echo "<script>window.location.href='./shoplogin.php'; </script>";
-// }
-
-?> -->
+<?php
+include '../global/garageaccesscontrol.php';
+if (!$login) {
+  echo "<script>window.location.href='shoplogin.php'; </script>";
+}
+$fetch_ginfo = mysqli_query($con,"SELECT * FROM garage WHERE gid=$global_gid");
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,16 +37,19 @@
           </div>
         </div>
 
+        <?php $ginfo = mysqli_fetch_assoc($fetch_ginfo) ?>
+
         <div class="row mt-3">
           <div class="col-lg-4">
             <div class="card profile-card-2">
-              <div class="card-img-block">
-                <img class="img-fluid" src="https://via.placeholder.com/800x500" alt="Card image cap">
-              </div>
+               <div class="card-img-block"><br>
+                 
+                 <img class="img-fluid" src="https://via.placeholder.com/500x200" alt="Card image cap"> 
+              </div> 
               <div class="card-body pt-5">
                 <img src="https://via.placeholder.com/110x110" alt="profile-image" class="profile">
                 <h5 class="card-title"><?php echo "$global_gname" ?></h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text"><?php echo $ginfo['gaddress']; ?><br><?php echo $ginfo['gphone']; ?><br><?php echo $ginfo['gemail']; ?> </p>
                 <div class="icon-block">
                   <a href="javascript:void();"><i class="fa fa-facebook bg-facebook text-white"></i></a>
                   <a href="javascript:void();"> <i class="fa fa-twitter bg-twitter text-white"></i></a>
