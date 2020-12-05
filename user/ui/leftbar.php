@@ -5,7 +5,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="ui/images/logo.png" alt="Logo"></a>
+                <a class="navbar-brand" href="./"><img src="ui/images/fflogo-icon.png" alt="Logo"> V-CARE</a>
                 <a class="navbar-brand hidden" href="./"><img src="ui/images/logo2.png" alt="Logo"></a>
             </div>
 
@@ -43,7 +43,7 @@
                         <ul class="sub-menu children dropdown-menu"> -->
                             <li><a href="add-vehicle.php">|<i class="fa fa-plus"></i>| Add Vehicle</a></li>
                             <li><a href="view-vehicle.php">|<i class="fa fa-car"></i>| View Vehicle</a></li>
-                            <li><a href="#">|<i class="fa fa-phone"></i>| S.O.S</a></li>
+                            <li><a href="sos.php">|<i class="fa fa-phone"></i>| S.O.S</a></li>
                             <li><a href="vehicle-service.php">|<i class="fa fa-wrench"></i>| Vehicle Service</a></li> 
                             <!-- <li></i><a href="forms-advanced.html">Advanced Form</a></li> -->
                         <!-- </ul>

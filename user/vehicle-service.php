@@ -42,7 +42,7 @@ $vehicle_query = mysqli_query($con, "SELECT * FROM garage WHERE gcity='$ucity'")
                                         <label for="cc-payment" class="control-label pull-left mb-1">Contact Number</label>
                                         <div class="input-group">
                                             <input type="text" id="phno" name="username2" value="<?php echo $record['gphone']; ?>" class="form-control" style="border-color:red;border-radius:5px;">
-                                                <div class="input-group-addon" style="border-color:red;border-radius:5px;"><i class="fa fa-copy"></i></div>
+                                                <div class="input-group-addon" style="border-color:red;border-radius:5px;"><i class="fa fa-phone"></i></div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -68,13 +68,6 @@ $vehicle_query = mysqli_query($con, "SELECT * FROM garage WHERE gcity='$ucity'")
         <?php } ?>
     </div>
     <?php include 'ui/jslink.php' ?>
-    <script>
-        function copy() {
-            var copyTextarea = document.getElementById("phno");
-            copyTextarea.select(); //select the text area
-            document.execCommand("copy");
-        }
-    </script>
 </body>
 
 </html>
