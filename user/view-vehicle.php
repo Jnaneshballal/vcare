@@ -4,16 +4,7 @@ if (!$login) {
     echo "<script>window.location.href='login/login.php'; </script>";
 }
 $fetch_info = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vuid=$global_uid");
-if (isset($_POST['delete'])) {
-    $vno = $_POST['veno'];
-    $del_query = mysqli_query($con, "DELETE from vehicle_info WHERE vno='$vno'");
-    if ($del_query) {
-        $smsg = "Vehicle Deleted";
-        header("refresh:1;url=view-vehicle.php");
-    } else {
-        $emsg = "Error!!";
-    }
-}
+
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -62,9 +53,11 @@ if (isset($_POST['delete'])) {
                                 <button type="button" vel-id="<?php echo $info['vid']; ?>" vel-no="<?php echo $info['vno']; ?>" class="btn btn-danger mb-1" data-toggle="modal" data-target="#mediumModal1" style="border-radius:100px;" onclick="delvehicle(this)">
                                     <i class="fa fa-trash"></i>
                                 </button>
-                                <button type="button" class="btn btn-warning pull-right mb-1" data-toggle="modal" data-target="#mediumModal2" style="border-radius:100px;" onclick="updatevehicle(this)">
-                                    <i class="fa fa-edit"></i>
-                                </button>
+                                <a href="edit-vehicle.php?vid=<?php echo $info['vid']; ?>">
+                                    <button type="button" class="btn btn-warning pull-right mb-1" style="border-radius:100px;">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                </a>
                             </li>
                         </ul>
 
@@ -105,44 +98,13 @@ if (isset($_POST['delete'])) {
                             Are You Sure You want to Delete vehicle <span id="vehid"></span> ??
                         </p>
                     </div>
-                    <form method="POST">
-                        <div class="modal-footer">
-                            <input type="hidden" name="veno" veh-id="vno">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" style="border-radius:110px;"><i class="fa fa-times">CANCEL</i></button>
-                            <button type="submit" class="btn btn-success" style="border-radius:100px;" name="delete"><i class="fa fa-check">DELETE</i></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- update-->
-        <div class="modal fade" id="mediumModal2" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true" data-backdrop="static">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="mediumModalLabel">UPDATE VEHICLE DETAILS!!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Vehicle Owner Name</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="vownername" class="form-control"></div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label for="password-input" class=" form-control-label">Emission Expire Date</label></div>
-                            <div class="col-12 col-md-9"><input type="Date" id="password-input" name="vemissionexdate" class="form-control"></div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Insurance Expire Date</label></div>
-                            <div class="col-12 col-md-9"><input type="date" id="text-input" name="vinsureexdate" class="form-control"></div>
-                        </div>
-                    </div>
+
                     <div class="modal-footer">
+                        <input type="hidden" name="veno" id="vno">
                         <button type="button" class="btn btn-danger" data-dismiss="modal" style="border-radius:110px;"><i class="fa fa-times">CANCEL</i></button>
-                        <button type="submit" class="btn btn-primary" style="border-radius:100px;"><i class="fa fa-check">UPDATE</i></button>
+                        <button id="delBtn" type="button" class="btn btn-success" style="border-radius:100px;" name="delete"><i class="fa fa-check">DELETE</i></button>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -155,8 +117,24 @@ if (isset($_POST['delete'])) {
             vno = vehicle.getAttribute('vel-no');
 
             document.getElementById("vehid").innerHTML = vno;
-            document.getElementById.value = vid;
+            document.getElementById("vno").value = vid;
         }
+        jQuery(document).ready(function() {
+            jQuery("#delBtn").click(function() {
+                var delid = jQuery("#vno").val();
+
+                jQuery.ajax({
+                    url: './delete-vehicle.php',
+                    type: "POST",
+                    data: {
+                        vid: delid
+                    },
+                    success: function() {
+                        window.location.reload();
+                    }
+                });
+            });
+        });
     </script>
 </body>
 

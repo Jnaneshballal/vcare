@@ -3,10 +3,7 @@ include '../global/useraccesscontrol.php';
 if (!$login) {
     echo "<script>window.location.href='login/login.php'; </script>";
 }
-if (isset($_POST['search'])) {
-    $city = $_POST['city'];
-    $get_garage = mysqli_query($con, "SELECT * FROM  garage WHERE gcity='$city'");
-}
+
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -31,12 +28,12 @@ if (isset($_POST['search'])) {
                     <strong><i class="fa fa-phone"> S O S</i></strong> Helpline..
                 </div>
                 <div class="card-body card-block">
-                    <form method="POST" class="form-horizontal">
+                    <form method="POST" id="search-form" class="form-horizontal">
                         <div class="row form-group">
                             <div class="col col-md-12">
                                 <p>Enter the near by city to get faster Access ...</p>
                                 <div class="input-group">
-                                    <input type="text" placeholder="City" class="form-control" name="city">
+                                    <input type="text" id="search-city" placeholder="City" class="form-control" name="city">
                                     <div class="input-group-btn"><button class="btn btn-primary" type="submit" name="search"><i class="fa fa-search"> Search</i></button></div>
                                 </div>
                             </div>
@@ -45,30 +42,34 @@ if (isset($_POST['search'])) {
                 </div>
             </div>
         </div>
-        <?php while ($garage = mysqli_fetch_assoc($get_garage)) { ?>
-            <div class="col-sm-12 mb-4">
-                <div class="card-group" >
-                    <div class="card col-md-6 no-padding ">
-                        <div class="card-body" style="border:2px solid red;border-radius:5px;">
-                            <div class="h1 text-muted text-right mb-4">
-                                <i class="fa fa-home"></i></i>
-                            </div>
+        <div id="search-result">
 
-                            <div class="h4 mb-0">
-                                <span><?php echo $garage['gname']; ?></span>
-                            </div>
-
-                            <small class="text-muted font-weight-bold">|<i class="fa fa-phone"></i>| <?php echo $garage['gphone']; ?></small><br>
-                            <small class="text-muted font-weight-bold">|<i class="fa fa-home"></i>| <?php echo $garage['gaddress']; ?></small>
-                            <div class="progress progress-xs mt-3 mb-0 bg-flat-color-1" style="width: 40%; height: 5px;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php } ?>
+        </div>
     </div>
 
     <?php include 'ui/jslink.php' ?>
+    <script>
+        jQuery(document).ready(function(){
+            jQuery("#search-form").submit(function(e){
+                e.preventDefault();
+                var city  = jQuery("#search-city").val();
+                jQuery("#search-result").load("./search-sos.php",{
+                    city: city
+                });
+                
+                // jQuery.ajax({
+                //     url: './search-sos.php',
+                //     type: "POST",
+                //     data:{
+                //         city: city
+                //     },
+                //     success: function(response){
+                //         jQuery("#search-result").html(response);
+                //     }
+                // })
+            })
+        })
+    </script>
 
 </body>
 
