@@ -64,7 +64,7 @@ if(isset($_POST['changepsw'])){
         <?php include 'ui/header.php' ?>
         <div class="col-lg-8">
             <form method="POST">
-                <div class="card" style="border:2px solid grey;border-radius:5px;">
+                <div class="card" style="border:2px solid red;border-radius:5px;">
                     <div class="card-header">
                         <strong><i class="fa fa-user"></i> User Profile</strong>
                     </div>
@@ -115,7 +115,7 @@ if(isset($_POST['changepsw'])){
             </form>
         </div>
         <div class="col-lg-6">
-            <div class="card">
+            <div class="card" style="border:2px solid red;border-radius:5px;">
                 <div class="card-header"><strong>Change Password</strong></div>
                 <?php if (isset($psmsg)) { ?>
                         <div class="alert alert-success" role="alert">

@@ -1,6 +1,6 @@
 <?php
 include '../global/garageaccesscontrol.php';
-if (!$login) {
+if (!$glogin) {
   echo "<script>window.location.href='shoplogin.php'; </script>";
 }
 $fetch_ginfo = mysqli_query($con,"SELECT * FROM garage WHERE gid=$global_gid");
