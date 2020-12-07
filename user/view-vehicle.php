@@ -50,9 +50,14 @@ $fetch_info = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vuid=$global_
                                 <i class="fa fa-calendar"></i> Insurance Expire Date <span class="badge badge-danger pull-right"><?php echo $info['vinsureexdate']; ?></span>
                             </li>
                             <li class="list-group-item">
-                                <button type="button" vel-id="<?php echo $info['vid']; ?>" vel-no="<?php echo $info['vno']; ?>" class="btn btn-danger mb-1" data-toggle="modal" data-target="#mediumModal1" style="border-radius:100px;" onclick="delvehicle(this)">
+                                <button type="button" vel-id="<?php echo $info['vid']; ?>" vel-no="<?php echo $info['vno']; ?>" class="btn btn-danger mb-1" data-toggle="modal" data-target="#mediumModal" style="border-radius:100px;" onclick="delvehicle(this)">
                                     <i class="fa fa-trash"></i>
                                 </button>
+                                <a href="vehicle-service.php?vid=<?php echo $info['vid']; ?>">
+                                    <button type="button" class="btn btn-warning mb-1" style="border-radius:100px;">
+                                        <i class="fa fa-wrench"></i>
+                                    </button>
+                                </a>
                                 <a href="edit-vehicle.php?vid=<?php echo $info['vid']; ?>">
                                     <button type="button" class="btn btn-warning pull-right mb-1" style="border-radius:100px;">
                                         <i class="fa fa-edit"></i>
@@ -66,7 +71,7 @@ $fetch_info = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vuid=$global_
             </div>
         <?php } ?>
         <!-- Deletion -->
-        <div class="modal fade" id="mediumModal1" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -75,24 +80,6 @@ $fetch_info = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vuid=$global_
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <?php if (isset($smsg)) { ?>
-                        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-                            <span class="badge badge-pill badge-success">Success</span>
-                            <?php echo $smsg; ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                    <?php } ?>
-                    <?php if (isset($emsg)) { ?>
-                        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-                            <span class="badge badge-pill badge-danger">Error!!</span>
-                            <?php echo $emsg; ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                    <?php } ?>
                     <div class="modal-body">
                         <p>
                             Are You Sure You want to Delete vehicle <span id="vehid"></span> ??
@@ -105,6 +92,28 @@ $fetch_info = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vuid=$global_
                         <button id="delBtn" type="button" class="btn btn-success" style="border-radius:100px;" name="delete"><i class="fa fa-check">DELETE</i></button>
                     </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Service-->
+    <div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">Static Modal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        This is a static modal, backdrop click will not close it.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Confirm</button>
                 </div>
             </div>
         </div>
