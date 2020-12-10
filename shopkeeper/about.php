@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,39 +23,51 @@
     <div class="content-wrapper">
       <div class="container-fluid">
 
-      <div class="row md-12">
-          <div class="col-md-12 text-center" style="color:blue">
-            <h2>About Us</h2>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h2>
+              <p style="color:MediumBlue">About Us</p>
+            </h2>
           </div>
         </div>
 
-        
-
-          <!--start overlay-->
-          <div class="overlay toggle-menu"></div>
-          <!--end overlay-->
-
+        <div>
+          Page Contents will be uploaded soon...
         </div>
-        <!-- End container-fluid-->
+
+        <div class="row">
+          <div class="col-md-12">
+            <marquee direction="left">
+              <img src="./ui/assets/images/rightcar.png">
+            </marquee>
+          </div>
+        </div>
+
+        <!--start overlay-->
+        <div class="overlay toggle-menu"></div>
+        <!--end overlay-->
 
       </div>
-      <!--End content-wrapper-->
-      <!--Start Back To Top Button-->
-      <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
-      <!--End Back To Top Button-->
+      <!-- End container-fluid-->
 
-      <!--Start footer-->
-      <!-- <footer class="footer">
+    </div>
+    <!--End content-wrapper-->
+    <!--Start Back To Top Button-->
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+    <!--End Back To Top Button-->
+
+    <!--Start footer-->
+    <!-- <footer class="footer">
       <div class="container">
         <div class="text-center">
           Copyright © 2018 Dashtreme Admin
         </div>
       </div>
     </footer> -->
-      <!--End footer-->
+    <!--End footer-->
 
-      <!--start color switcher-->
-      <!-- <div class="right-sidebar">
+    <!--start color switcher-->
+    <!-- <div class="right-sidebar">
     <div class="switcher-icon">
       <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
     </div>
@@ -92,13 +102,13 @@
       
      </div>
    </div> -->
-      <!--end color switcher-->
+    <!--end color switcher-->
 
-    </div>
-    <!--End wrapper-->
+  </div>
+  <!--End wrapper-->
 
-    <!--js links-->
-    <?php include './ui/jslink.php'; ?>
+  <!--js links-->
+  <?php include './ui/jslink.php'; ?>
 
 
 </body>

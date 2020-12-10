@@ -1,3 +1,10 @@
+<?php
+include '../global/garageaccesscontrol.php';
+if (!$glogin) {
+  echo "<script>window.location.href='shoplogin.php'; </script>";
+}
+$fetch_ginfo = mysqli_query($con, "SELECT * FROM garage WHERE gid=$global_gid");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,17 +34,33 @@
         <div class="row md-12">
           <div class="col-md-12 text-center">
             <h2>
-              <p style="color:MediumBlue">Welcome to VCare</p>
+              <p style="color:MediumBlue">Profile</p>
             </h2>
           </div>
         </div>
 
+        <?php $ginfo = mysqli_fetch_assoc($fetch_ginfo) ?>
 
-        <div class="row">
-          <div class="col-md-12">
-            <img src="./ui/assets/images/carbike.gif" width="100%">
+        <div class="row mt-3">
+          <div class="col-lg-4">
+            <div class="card profile-card-2">
+              <div class="card-img-block"><br>
+
+                <img class="card-img-block" src="./ui/assets/images/c1.png" alt="Card image cap">
+              </div>
+              <div class="card-body pt-5">
+                <img src="./ui/assets/images/c2.png" alt="profile-image" class="profile">
+                <h5 class="card-title"><?php echo "$global_gname" ?></h5>
+                <p class="card-text"><?php echo $ginfo['gaddress']; ?><br><?php echo $ginfo['gphone']; ?><br><?php echo $ginfo['gemail']; ?> </p>
+                <div class="icon-block">
+                  <a href="javascript:void();"><i class="fa fa-facebook bg-facebook text-white"></i></a>
+                  <a href="javascript:void();"> <i class="fa fa-twitter bg-twitter text-white"></i></a>
+                  <a href="javascript:void();"> <i class="fa fa-google-plus bg-google-plus text-white"></i></a>
+                </div>
+              </div>
+            </div>
+
           </div>
-        </div>
 
           <!--start overlay-->
           <div class="overlay toggle-menu"></div>
