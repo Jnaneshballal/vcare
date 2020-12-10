@@ -47,9 +47,9 @@ if ($v_count >= 1) {
                                 <section class="card">
                                     <div class="card-header user-header alt bg-dark">
                                         <div class="media">
-                                            <a href="#">
+                                            <!-- <a href="#"> -->
                                                 <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="ui/images/car.png">
-                                            </a>
+                                            <!-- </a> -->
                                             <div class="media-body">
                                                 <h2 class="text-light display-6"><?php echo $info['vmodel'];?></h2>
                                                 <p><?php echo $info['vno'];?></p>

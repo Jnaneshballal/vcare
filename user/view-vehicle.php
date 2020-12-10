@@ -53,12 +53,12 @@ $fetch_info = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vuid=$global_
                                 <button type="button" vel-id="<?php echo $info['vid']; ?>" vel-no="<?php echo $info['vno']; ?>" class="btn btn-danger mb-1" data-toggle="modal" data-target="#mediumModal" style="border-radius:100px;" onclick="delvehicle(this)">
                                     <i class="fa fa-trash"></i>
                                 </button>
-                                <a href="vehicle-service.php?vid=<?php echo $info['vid']; ?>">
+                                <a href="vehicle-service.php?vid=<?php echo $info['vid'];?>">
                                     <button type="button" class="btn btn-warning mb-1" style="border-radius:100px;">
                                         <i class="fa fa-wrench"></i>
                                     </button>
                                 </a>
-                                <a href="edit-vehicle.php?vid=<?php echo $info['vid']; ?>">
+                                <a href="edit-vehicle.php?vid=<?php echo $info['vid'];?>">
                                     <button type="button" class="btn btn-warning pull-right mb-1" style="border-radius:100px;">
                                         <i class="fa fa-edit"></i>
                                     </button>
@@ -96,29 +96,6 @@ $fetch_info = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vuid=$global_
             </div>
         </div>
     </div>
-    <!--Service-->
-    <div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true" data-backdrop="static">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticModalLabel">Static Modal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        This is a static modal, backdrop click will not close it.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Confirm</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <?php include 'ui/jslink.php' ?>
     <script>
         function delvehicle(vehicle) {
