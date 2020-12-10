@@ -1,22 +1,21 @@
 <?php
 include '../global/connection.php';
 session_start();
-if (isset($_POST['login'])) {
-	$gname = $_POST['gname'];
-	$gpsd = md5($_POST['gpassword']);
-	$query = mysqli_query($con, "SELECT * FROM garage WHERE (gname='$gname' OR gemail='$gname') AND gpassword='$gpsd' ");
-	$check = mysqli_num_rows($query);
-	$row = mysqli_fetch_assoc($query);
-	if ($check >= 1) {
-		$_SESSION['gid'] = $row['gid'];
-		$_SESSION['gname'] = $row['gname'];
-		$smsg = "Login successfull,Redirection in 1 sec..";
-		header("refresh:1;url=./index.php");
-	} else {
-		$emsg = "Invalid Login";
-	}
+if (isset($_POST['glogin'])) {
+    $gname = $_POST['gname'];
+    $gpassword = md5($_POST['gpassword']);
+    $gquery = mysqli_query($con, "SELECT * FROM garage WHERE (gname='$gname' OR gemail='$gname') AND gpassword='$gpassword' ");
+    $gcheck = mysqli_num_rows($gquery);
+    $grow = mysqli_fetch_assoc($gquery);
+    if ($gcheck >= 1) {
+        $_SESSION['gid'] = $grow['gid'];
+        $_SESSION['gname'] = $grow['gname'];
+        $gsmsg = "Login successfull,Redirection in 1 sec..";
+        header("refresh:1;url=index.php");
+    } else {
+        $gemsg =mysqli_error($con);
+    }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,26 +27,25 @@ if (isset($_POST['login'])) {
 <body class="bg-theme bg-theme1">
 
 	<!-- start loader -->
-	<div id="pageloader-overlay" class="visible incoming">
+	<!-- <div id="pageloader-overlay" class="visible incoming">
 		<div class="loader-wrapper-outer">
 			<div class="loader-wrapper-inner">
 				<div class="loader"></div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- end loader -->
 
 	<!-- Start wrapper-->
 	<div id="wrapper">
-
-		<div class="loader-wrapper">
+		<!-- <div class="loader-wrapper">
 			<div class="lds-ring">
 				<div></div>
 				<div></div>
 				<div></div>
 				<div></div>
 			</div>
-		</div>
+		</div> -->
 		<div class="card card-authentication1 mx-auto my-5" style="width:450px">
 			<div class="card-body">
 				<div class="card-content p-2">
@@ -55,17 +53,15 @@ if (isset($_POST['login'])) {
 						<img src="./ui/assets/images/fflogo-icon.png" alt="logo icon">
 					</div>
 					<div class="card-title text-uppercase text-center py-3">Sign In</div>
-					<?php
-					if (isset($smsg)) {
-						echo $smsg;
-					}
-					?>
-					<?php
-					if (isset($emsg)) {
-						echo $emsg;
-					}
-					?>
 					<form method="POST">
+						<?php
+						if(isset($gsmsg)){
+							echo $gsmsg;
+						}
+						if(isset($gemsg)){
+							echo $gemsg;
+						}
+						 ?>
 						<div class="form-group">
 							<label for="exampleInputUsername" class="sr-only">Username/Email</label>
 							<div class="position-relative has-icon-right">
@@ -85,28 +81,9 @@ if (isset($_POST['login'])) {
 							</div>
 						</div>
 
-						<!-- <div class="form-row">
-			 <div class="form-group col-6">
-			   <div class="icheck-material-white">
-                <input type="checkbox" id="user-checkbox" checked="" />
-                <label for="user-checkbox">Remember me</label>
-			  </div>
-			 </div>
-			 <div class="form-group col-6 text-right">
-			  <a href="reset-password.html">Reset Password</a>
-			 </div>
-			</div> -->
-						<button type="submit" class="btn btn-light btn-block" name="login">Sign In</button>
-						<!-- <div class="text-center mt-3">Sign In With</div> -->
-
-						<!-- <div class="form-row mt-4">
-			  <div class="form-group mb-0 col-6">
-			   <button type="button" class="btn btn-light btn-block"><i class="fa fa-facebook-square"></i> Facebook</button>
-			 </div>
-			 <div class="form-group mb-0 col-6 text-right">
-			  <button type="button" class="btn btn-light btn-block"><i class="fa fa-twitter-square"></i> Twitter</button>
-			 </div>
-			</div> -->
+				
+						<button type="submit" class="btn btn-light btn-block" name="glogin">Sign In</button>
+						
 
 					</form>
 				</div>
@@ -117,11 +94,11 @@ if (isset($_POST['login'])) {
 		</div>
 
 		<!--Start Back To Top Button-->
-		<a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+		<!-- <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a> -->
 		<!--End Back To Top Button-->
 
 		<!--start color switcher-->
-		<div class="right-sidebar">
+		<!-- <div class="right-sidebar">
 			<div class="switcher-icon">
 				<i class="zmdi zmdi-settings zmdi-hc-spin"></i>
 			</div>
@@ -155,7 +132,7 @@ if (isset($_POST['login'])) {
 				</ul>
 
 			</div>
-		</div>
+		</div> -->
 		<!--end color switcher-->
 
 	</div>

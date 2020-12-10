@@ -3,7 +3,8 @@ include '../global/garageaccesscontrol.php';
 if (!$glogin) {
   echo "<script>window.location.href='shoplogin.php'; </script>";
 }
-$fetch_ginfo = mysqli_query($con, "SELECT * FROM garage WHERE gid=$global_gid");
+$fetch_ginfo = mysqli_query($con, "SELECT * FROM garage WHERE gid='$global_gid'");
+$ginfo = mysqli_fetch_assoc($fetch_ginfo) ;
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +38,7 @@ $fetch_ginfo = mysqli_query($con, "SELECT * FROM garage WHERE gid=$global_gid");
           </div>
         </div>
 
-        <?php $ginfo = mysqli_fetch_assoc($fetch_ginfo) ?>
+        
 
         <div class="row mt-3">
           <div class="col-lg-4">
