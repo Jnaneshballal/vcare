@@ -1,23 +1,23 @@
 <?php
 include '../global/connection.php';
-if (isset($_POST['register'])) {
+if (isset($_POST['gregister'])) {
 	$gname = $_POST['gname'];
 	$gemail = $_POST['gemail'];
 	$gphone = $_POST['gphone'];
 	$gaddress = $_POST['gaddress'];
 	$gcity = $_POST['gcity'];
 	$gpassword = md5($_POST['gpassword']);
-	$query = mysqli_query($con, "SELECT * FROM garage WHERE gemail='$gemail'");
-	$count = mysqli_num_rows($query);
+	$gquery = mysqli_query($con, "SELECT * FROM garage WHERE gemail='$gemail'");
+	$gcount = mysqli_num_rows($gquery);
 	if ($count > 0) {
-		$emsg = "Garage already exists";
+		$gemsg = "Garage already exists";
 	} else {
-		$insert_Query = mysqli_query($con, "INSERT INTO garage (gname,gemail,gphone,gaddress,gcity,gpassword) VALUES ('$gname','$gemail','$gphone','$gaddress','$gcity','$gpassword')");
-		if ($insert_Query) {
+		$ginsert_Query = mysqli_query($con, "INSERT INTO garage (gname,gemail,gphone,gaddress,gcity,gpassword) VALUES ('$gname','$gemail','$gphone','$gaddress','$gcity','$gpassword')");
+		if ($ginsert_Query) {
 			header("refresh:1;url=./shoplogin.php");
 			$smsg = "Registerd Successfully redirecting ......";
 		} else {
-			$emsg = "ERROR !!!";
+			$gemsg = "ERROR !!!";
 		}
 	}
 }
@@ -133,7 +133,7 @@ if (isset($_POST['register'])) {
 			     </div>
 			    </div> -->
 
-						<button type="submit" class="btn btn-light btn-block waves-effect waves-light" name="register">Sign Up</button>
+						<button type="submit" class="btn btn-light btn-block waves-effect waves-light" name="gregister">Sign Up</button>
 					</form>
 					<!-- <div class="text-center mt-3">Sign Up With</div> -->
 
