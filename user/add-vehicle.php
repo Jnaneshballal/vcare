@@ -1,7 +1,6 @@
 <?php
 include '../global/useraccesscontrol.php';
-if(!$login)
-{
+if (!$login) {
     header("url=./login.php");
 }
 if (isset($_POST['success'])) {
@@ -12,11 +11,16 @@ if (isset($_POST['success'])) {
     $vmodel = $_POST['vmodel'];
     $vemissionexdate = $_POST['vemissionexdate'];
     $vinsureexdate = $_POST['vinsureexdate'];
-    $query = mysqli_query($con, "INSERT INTO vehicle_info(vuid,vownername,vno,vengineno,vchassino,vmodel,vemissionexdate,vinsureexdate)VALUES('$global_uid','$vownername','$vno','$vengineno','$vchassino','$vmodel','$vemissionexdate','$vinsureexdate')");
-    if ($query) {
-        $smsg = "Vehicle Registered";
+    $v_check = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vno='$vno'");
+    if ($v_check >= 1) {
+        $emsg = "Vehicle Already Registered!!";
     } else {
-        $emsg = mysqli_error($con);
+        $query = mysqli_query($con, "INSERT INTO vehicle_info(vuid,vownername,vno,vengineno,vchassino,vmodel,vemissionexdate,vinsureexdate)VALUES('$global_uid','$vownername','$vno','$vengineno','$vchassino','$vmodel','$vemissionexdate','$vinsureexdate')");
+        if ($query) {
+            $smsg = "Vehicle Registered";
+        } else {
+            $emsg = mysqli_error($con);
+        }
     }
 }
 ?>
@@ -102,7 +106,7 @@ if (isset($_POST['success'])) {
             </div>
         </div>
     </div>
-        <?php include 'ui/jslink.php' ?>
+    <?php include 'ui/jslink.php' ?>
 </body>
 
 </html>

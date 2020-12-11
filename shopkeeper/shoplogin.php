@@ -1,6 +1,10 @@
 <?php
 include '../global/connection.php';
-session_start();
+
+if(isset($_SESSION['gid'])){
+	echo "<script> window.location.href='index.php'</script>";
+}
+
 if (isset($_POST['glogin'])) {
 	$gname = $_POST['gname'];
 	$gpassword = md5($_POST['gpassword']);
@@ -8,8 +12,11 @@ if (isset($_POST['glogin'])) {
 	$gcheck = mysqli_num_rows($gquery);
 	$grow = mysqli_fetch_assoc($gquery);
 	if ($gcheck >= 1) {
+		session_start();
+
 		$_SESSION['gid'] = $grow['gid'];
 		$_SESSION['gname'] = $grow['gname'];
+
 		$gsmsg = "Login successfull,Redirection in 1 sec..";
 		header("refresh:1;url=index.php");
 	} else {

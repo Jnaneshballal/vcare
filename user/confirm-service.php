@@ -6,12 +6,25 @@ if (!$login) {
 }
 $gid = $_GET['gid'];
 $vid = $_GET['vid'];
+
 $gquery = mysqli_query($con, "SELECT * FROM garage WHERE gid='$gid'");
 $g_info = mysqli_fetch_assoc($gquery);
-$vquery = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vid='$vid'");
+$vquery = mysqli_query($con, "SELECT * FROM user_info JOIN vehicle_info WHERE vehicle_info.vuid='$global_uid' AND vehicle_info.vid='$vid'");
 $v_info = mysqli_fetch_assoc($vquery);
-if(isset($_POST['submit'])){
-
+if (isset($_POST['submit'])) {
+    $vno = $v_info['vno'];
+    $vownername = $v_info['uname'];
+    $sstatus ="0";
+    $gname = $g_info['gname'];
+    $gphone = $g_info['gphone'];
+    $uphone = $v_info['uphone'];
+    $book_service = mysqli_query($con, "INSERT INTO service_info (gid,vno,vownername,sstatus,gname,gphone,uphone)VALUES('$gid','$vno','$vownername','$sstatus','$gname','$gphone','$uphone')");
+    if ($book_service) {
+        $smsg = "Service booked,bring your Vehicle to Garage !!";
+        header("refresh:2;url=#");
+    } else {
+        $emsg = mysqli_error($con);
+    }
 }
 ?>
 <!doctype html>
@@ -35,8 +48,26 @@ if(isset($_POST['submit'])){
                 <div class="card-header">
                     <strong style="color:grey;">Book Service!!</strong>
                 </div>
-                <div class="card-body card-block">
-                    <form action="" method="post" class="form-horizontal">
+                <?php if (isset($smsg)) { ?>
+                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                        <span class="badge badge-pill badge-success">Success</span>
+                        <?php echo $smsg ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php } ?>
+                <?php if (isset($emsg)) { ?>
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                        <span class="badge badge-pill badge-danger">Error!!</span>
+                        <?php echo $emsg ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php } ?>
+                <form action="" method="post" class="form-horizontal">
+                    <div class="card-body card-block">
                         <div class="row form-group">
                             <div class="col col-md-5"><label for="hf-email" class=" form-control-label"><b>Vehicle Number :</b></label></div>
                             <div class="col-12 col-md-5"><label id="hf-email" name="vno" class="form-control-label"><strong style="color:red;"><?php echo strtoupper($v_info['vno']); ?></strong></label></div>
@@ -53,19 +84,18 @@ if(isset($_POST['submit'])){
                             <div class="col col-md-5"><label for="hf-email" class=" form-control-label"><b>Garage Address :</b></label></div>
                             <div class="col-12 col-md-5"><label id="hf-email" name="gaddress" class="form-control-label"><strong style="color:red;"><?php echo $g_info['gaddress']; ?></strong></label></div>
                         </div>
-
-                    </form>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-success btn-sm mb-1 pull-right" name="submit" style="border-radius:100px;">
-                        <i class="fa fa-check"> Book Service</i>
-                    </button>
-                    <a href="view-vehicle.php">
-                        <button type="button" class="btn btn-danger btn-sm mb-1" style="border-radius:100px;">
-                            <i class="fa fa-times"> Cancel</i>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success btn-sm mb-1 pull-right" name="submit" style="border-radius:100px;">
+                            <i class="fa fa-check"> Book Service</i>
                         </button>
-                    </a>
-                </div>
+                        <a href="view-vehicle.php">
+                            <button type="button" class="btn btn-danger btn-sm mb-1" style="border-radius:100px;">
+                                <i class="fa fa-times"> Cancel</i>
+                            </button>
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
