@@ -4,9 +4,10 @@ if (!$login) {
     //if user not logged in
     echo "<script>window.location.href='login/login.php'; </script>";
 }
+date_default_timezone_set('Asia/Kolkata');
+$date=date("d-m-Y H:i:s");
 $gid = $_GET['gid'];
 $vid = $_GET['vid'];
-
 $gquery = mysqli_query($con, "SELECT * FROM garage WHERE gid='$gid'");
 $g_info = mysqli_fetch_assoc($gquery);
 $vquery = mysqli_query($con, "SELECT * FROM user_info JOIN vehicle_info WHERE vehicle_info.vuid='$global_uid' AND vehicle_info.vid='$vid'");
@@ -18,7 +19,7 @@ if (isset($_POST['submit'])) {
     $gname = $g_info['gname'];
     $gphone = $g_info['gphone'];
     $uphone = $v_info['uphone'];
-    $book_service = mysqli_query($con, "INSERT INTO service_info (gid,vno,vownername,sstatus,gname,gphone,uphone,uid)VALUES('$gid','$vno','$vownername','$sstatus','$gname','$gphone','$uphone','$global_uid')");
+    $book_service = mysqli_query($con, "INSERT INTO service_info (gid,vno,vownername,sstatus,gname,gphone,uphone,uid,sdate)VALUES('$gid','$vno','$vownername','$sstatus','$gname','$gphone','$uphone','$global_uid','$date')");
     if ($book_service) {
         $smsg = "Service booked,bring your Vehicle to Garage !!";
         header("refresh:2;url=#");

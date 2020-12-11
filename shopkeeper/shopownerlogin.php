@@ -4,7 +4,7 @@ session_start();
 if (isset($_POST['gologin'])) {
 	$goname = $_POST['goname'];
 	$gopassword = md5($_POST['gopassword']);
-	$gquery = mysqli_query($con, "SELECT * FROM garageowner WHERE (goname='$goname' OR goemail='$goemail') AND gopassword='$gopassword' ");
+	$gquery = mysqli_query($con, "SELECT * FROM garageowner WHERE (goname='$goname' OR goemail='$goname') AND gopassword='$gopassword' ");
 	$gcheck = mysqli_num_rows($gquery);
 	$grow = mysqli_fetch_assoc($gquery); 
 	if ($gcheck >= 1) {

@@ -2,5 +2,5 @@
 session_start();
 session_unset();
 session_destroy();
-echo "<script>window.location.href='../shopkeeper/shoplogin.php'; </script>";
+echo "<script>window.location.href='../shopkeeper/shopownerlogin.php'; </script>";
 ?>

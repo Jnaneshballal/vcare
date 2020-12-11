@@ -4,8 +4,8 @@ if (!$login) {
     //if user not logged in
     echo "<script>window.location.href='login/login.php'; </script>";
 }
-$s_query=mysqli_query($con,"SELECT * FROM service_info WHERE uid='$global_uid'");
-$s_info=mysqli_fetch_assoc($s_query);
+$s_query = mysqli_query($con, "SELECT * FROM service_info WHERE uid='$global_uid'");
+
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -23,40 +23,52 @@ $s_info=mysqli_fetch_assoc($s_query);
     <?php include 'ui/leftbar.php'; ?>
     <div id="right-panel" class="right-panel">
         <?php include 'ui/header.php' ?>
-        <div class="col-md-4">
-            <section class="card" style="border:2px solid skyblue;border-radius:5px;">
-                <div class="twt-feed blue-bg">
-                    <!-- <div class="corner-ribon black-ribon">
-                        <i class="fa fa-twitter"></i>
-                    </div>
-                    <div class="fa fa-twitter wtt-mark"></div> -->
-
-                    <div class="media">
-                        <a href="#">
-                            <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="ui/images/car.png">
-                        </a>
-                        <div class="media-body">
-                            <h2 class="text-white display-6"><?php echo strtoupper($s_info['vno']);?></h2>
-                            <p class="text-light">Owner</p>
+        <?php while ($s_info = mysqli_fetch_assoc($s_query)) { ?>
+            <div class="col-md-4">
+                <aside class="profile-nav alt">
+                    <section class="card" style="border:2px solid red;border-radius:5px;">
+                        <div class="card-header user-header alt bg-dark">
+                            <div class="media">
+                                <a href="#">
+                                    <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="ui/images/car.png">
+                                </a>
+                                <div class="media-body">
+                                    <h2 class="text-light display-6"><?php echo $s_info['vno']; ?></h2>
+                                    <p>Owner</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="weather-category twt-category">
-                    
-                </div>
-                <div class="twt-write col-sm-12">
-                    <textarea placeholder="Write your Tweet and Enter" rows="1" class="form-control t-text-area"></textarea>
-                </div>
-                <footer class="twt-footer">
-                    <!-- <a href="#"><i class="fa fa-camera"></i></a>
-                    <a href="#"><i class="fa fa-map-marker"></i></a>
-                    New Castle, UK -->
-                    <!-- <span class="pull-right">
-                        32
-                    </span> -->
-                </footer>
-            </section>
-        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <i class="fa fa-home"></i> Garage Name <span class="badge pull-right"><?php echo $s_info['gname']; ?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-phone"></i> Garage Contact Number <span class="badge pull-right"><?php echo $s_info['gphone']; ?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-phone"></i> Service Keep Date <span class="badge pull-right"><?php echo $s_info['sdate']; ?></span>
+                            </li>
+                            <?php if ($s_info['sstatus'] == "0") {
+                                $status = "Under Service";
+                            } else {
+                                $sstatus = "Service Done Vehicle Ready to collect.";
+                            }
+                            ?>
+                            <?php if (isset($status)) { ?>
+                                <li class="list-group-item">
+                                    <i class="fa fa-clock-o"></i> Vehicle Status <span class="badge pull-right" style="color:red;"><?php echo $status; ?></span>
+                                </li>
+                            <?php } ?>
+                            <?php if (isset($sstatus)) { ?>
+                                <li class="list-group-item">
+                                    <i class="fa fa-home"></i> Vehicle Status <span class="badge pull-right" style="color:green;"><?php echo $sstatus; ?></span>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        <?php } ?>
     </div>
     <?php include 'ui/jslink.php' ?>
 </body>
