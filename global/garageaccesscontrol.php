@@ -7,3 +7,4 @@ if (isset($_SESSION['gid'])) {
     $global_gid = $_SESSION['gid'];
     $global_gname = $_SESSION['gname'];
 }
+?>

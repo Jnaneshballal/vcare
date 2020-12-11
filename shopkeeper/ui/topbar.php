@@ -11,10 +11,11 @@ include '../global/garageaccesscontrol.php';
         </a>
       </li>
       <li class="nav-item">
-        <form class="search-bar">
+        <!-- <form class="search-bar">
           <input type="text" class="form-control" placeholder="Enter keywords">
           <a href="javascript:void();"><i class="icon-magnifier"></i></a>
-        </form>
+        </form> -->
+        Hello, <?php echo strtoupper($global_gname); ?>
       </li>
     </ul>
 

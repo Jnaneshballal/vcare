@@ -2,19 +2,19 @@
 include '../global/connection.php';
 session_start();
 if (isset($_POST['glogin'])) {
-    $gname = $_POST['gname'];
-    $gpassword = md5($_POST['gpassword']);
-    $gquery = mysqli_query($con, "SELECT * FROM garage WHERE (gname='$gname' OR gemail='$gname') AND gpassword='$gpassword' ");
-    $gcheck = mysqli_num_rows($gquery);
-    $grow = mysqli_fetch_assoc($gquery);
-    if ($gcheck >= 1) {
-        $_SESSION['gid'] = $grow['gid'];
-        $_SESSION['gname'] = $grow['gname'];
-        $gsmsg = "Login successfull,Redirection in 1 sec..";
-        header("refresh:1;url=index.php");
-    } else {
-        $gemsg =mysqli_error($con);
-    }
+	$gname = $_POST['gname'];
+	$gpassword = md5($_POST['gpassword']);
+	$gquery = mysqli_query($con, "SELECT * FROM garage WHERE (gname='$gname' OR gemail='$gname') AND gpassword='$gpassword' ");
+	$gcheck = mysqli_num_rows($gquery);
+	$grow = mysqli_fetch_assoc($gquery);
+	if ($gcheck >= 1) {
+		$_SESSION['gid'] = $grow['gid'];
+		$_SESSION['gname'] = $grow['gname'];
+		$gsmsg = "Login successfull,Redirection in 1 sec..";
+		header("refresh:1;url=index.php");
+	} else {
+		$gemsg ="Error!!";
+	}
 }
 ?>
 <!DOCTYPE html>
@@ -25,27 +25,7 @@ if (isset($_POST['glogin'])) {
 </head>
 
 <body class="bg-theme bg-theme1">
-
-	<!-- start loader -->
-	<!-- <div id="pageloader-overlay" class="visible incoming">
-		<div class="loader-wrapper-outer">
-			<div class="loader-wrapper-inner">
-				<div class="loader"></div>
-			</div>
-		</div>
-	</div> -->
-	<!-- end loader -->
-
-	<!-- Start wrapper-->
 	<div id="wrapper">
-		<!-- <div class="loader-wrapper">
-			<div class="lds-ring">
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
-		</div> -->
 		<div class="card card-authentication1 mx-auto my-5" style="width:450px">
 			<div class="card-body">
 				<div class="card-content p-2">
@@ -55,13 +35,13 @@ if (isset($_POST['glogin'])) {
 					<div class="card-title text-uppercase text-center py-3">Sign In</div>
 					<form method="POST">
 						<?php
-						if(isset($gsmsg)){
+						if (isset($gsmsg)) {
 							echo $gsmsg;
 						}
-						if(isset($gemsg)){
+						if (isset($gemsg)) {
 							echo $gemsg;
 						}
-						 ?>
+						?>
 						<div class="form-group">
 							<label for="exampleInputUsername" class="sr-only">Username/Email</label>
 							<div class="position-relative has-icon-right">
@@ -80,11 +60,7 @@ if (isset($_POST['glogin'])) {
 								</div>
 							</div>
 						</div>
-
-				
 						<button type="submit" class="btn btn-light btn-block" name="glogin">Sign In</button>
-						
-
 					</form>
 				</div>
 			</div>
@@ -92,62 +68,8 @@ if (isset($_POST['glogin'])) {
 				<p class="text-warning mb-0">Do not have an account? <a href="shopregister.php"> Sign Up here</a></p>
 			</div>
 		</div>
-
-		<!--Start Back To Top Button-->
-		<!-- <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a> -->
-		<!--End Back To Top Button-->
-
-		<!--start color switcher-->
-		<!-- <div class="right-sidebar">
-			<div class="switcher-icon">
-				<i class="zmdi zmdi-settings zmdi-hc-spin"></i>
-			</div>
-			<div class="right-sidebar-content">
-
-				<p class="mb-0">Gaussion Texture</p>
-				<hr>
-
-				<ul class="switcher">
-					<li id="theme1"></li>
-					<li id="theme2"></li>
-					<li id="theme3"></li>
-					<li id="theme4"></li>
-					<li id="theme5"></li>
-					<li id="theme6"></li>
-				</ul>
-
-				<p class="mb-0">Gradient Background</p>
-				<hr>
-
-				<ul class="switcher">
-					<li id="theme7"></li>
-					<li id="theme8"></li>
-					<li id="theme9"></li>
-					<li id="theme10"></li>
-					<li id="theme11"></li>
-					<li id="theme12"></li>
-					<li id="theme13"></li>
-					<li id="theme14"></li>
-					<li id="theme15"></li>
-				</ul>
-
-			</div>
-		</div> -->
-		<!--end color switcher-->
-
 	</div>
-	<!--wrapper-->
-
-	<!-- Bootstrap core JavaScript-->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/popper.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-
-	<!-- sidebar-menu js -->
-	<script src="assets/js/sidebar-menu.js"></script>
-
-	<!-- Custom scripts -->
-	<script src="assets/js/app-script.js"></script>
+	<?php include 'ui/jslink.php'; ?>
 
 </body>
 
