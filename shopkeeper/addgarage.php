@@ -1,4 +1,7 @@
 <?php
+include '../global/garageaccesscontrol.php';
+?>
+<?php
 include '../global/connection.php';
 if (isset($_POST['register'])) {
   $gname = $_POST['gname'];
@@ -12,7 +15,7 @@ if (isset($_POST['register'])) {
   if ($count > 0) {
     $emsg = "Garage already exists";
   } else {
-    $insert_Query = mysqli_query($con, "INSERT INTO garage (gname,gemail,gphone,gaddress,gcity) VALUES ('$gname','$gemail','$gphone','$gaddress','$gcity')");
+    $insert_Query = mysqli_query($con, "INSERT INTO garage (gouid,gname,gemail,gphone,gaddress,gcity) VALUES ('$global_goid','$gname','$gemail','$gphone','$gaddress','$gcity')");
     if ($insert_Query) {
       header("refresh:1;url=./index.php");
       $smsg = "Registerd Successfully redirecting ......";
