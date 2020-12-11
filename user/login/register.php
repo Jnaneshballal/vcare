@@ -3,6 +3,7 @@ include '../../global/connection.php';
 if (isset($_POST['register'])) {
     $uname = $_POST['uname'];
     $uemail = $_POST['uemail'];
+    $uphone=$_POST['uphone'];
     $uaddress = $_POST['uaddress'];
     $ucity = $_POST['ucity'];
     $upin = $_POST['upin'];
@@ -16,7 +17,7 @@ if (isset($_POST['register'])) {
         if ($count > 0) {
             $emsg = "User Already registered";
         } else {
-            $insert_Query = mysqli_query($con, "INSERT INTO user_info (uname,uemail,uaddress,ucity,upin,upassword) VALUES ('$uname','$uemail','$uaddress','$ucity','$upin','$upassword')");
+            $insert_Query = mysqli_query($con, "INSERT INTO user_info (uname,uemail,uphone,uaddress,ucity,upin,upassword) VALUES ('$uname','$uemail','$uphone','$uaddress','$ucity','$upin','$upassword')");
             if ($insert_Query) {
                 header("refresh:1;url=./login.php");
                 $smsg = "Registred Successfully.Redirecting....";
@@ -100,6 +101,10 @@ if (isset($_POST['register'])) {
                         <div class="form-group">
                             <label>Email address</label>
                             <input type="email" class="form-control" placeholder="Email" name="uemail">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Number</label>
+                            <input type="number" class="form-control" placeholder="Phone number" name="uphone">
                         </div>
                         <div class="form-group">
                             <label>Address</label>

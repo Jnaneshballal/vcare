@@ -8,10 +8,11 @@ $record = mysqli_fetch_assoc($user_info);
 if (isset($_POST['updateprofile'])) {
     $uname = $_POST['uname'];
     $uemail = $_POST['uemail'];
+    $uphone=$_POST['uphone'];
     $uaddress = $_POST['uaddress'];
     $ucity = $_POST['ucity'];
     $upin = $_POST['upin'];
-    $update_query = mysqli_query($con, "UPDATE user_info SET uname='$uname',uemail='$uemail',uaddress='$uaddress',ucity='$ucity',upin='$upin' WHERE uid='$global_uid'");
+    $update_query = mysqli_query($con, "UPDATE user_info SET uname='$uname',uemail='$uemail',uphone='$uphone',uaddress='$uaddress',ucity='$ucity',upin='$upin' WHERE uid='$global_uid'");
     if ($update_query) {
         $smsg = "Profile Updated!!";
         header("refresh:1;url=user-profile.php");
@@ -87,6 +88,10 @@ if(isset($_POST['changepsw'])){
                             <div class="row form-group">
                                 <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">E-mail</label></div>
                                 <div class="col col-sm-6"><input type="email" id="input-normal" name="uemail" class="input-sm form-control-sm form-control" value="<?php echo  $record['uemail']; ?>"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Contact Number</label></div>
+                                <div class="col col-sm-6"><input type="text" id="input-normal" name="uphone" class="input-sm form-control-sm form-control" value="<?php echo  $record['uphone']; ?>"></div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-sm-5"><label for="input-large" class=" form-control-label">Address</label></div>
