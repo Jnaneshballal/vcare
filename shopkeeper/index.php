@@ -1,9 +1,9 @@
 <?php
 include '../global/garageaccesscontrol.php';
-if (!$glogin) {
+if (!$gologin) {
   echo "<script>window.location.href='shoplogin.php'; </script>";
 }
-$fetch_ginfo = mysqli_query($con, "SELECT * FROM garage WHERE gid='$global_gid'");
+$fetch_ginfo = mysqli_query($con, "SELECT * FROM garage WHERE gouid='$global_goid'");
 $ginfo = mysqli_fetch_assoc($fetch_ginfo) ;
 ?>
 
@@ -49,7 +49,7 @@ $ginfo = mysqli_fetch_assoc($fetch_ginfo) ;
               </div>
               <div class="card-body pt-5">
                 <img src="./ui/assets/images/c2.png" alt="profile-image" class="profile">
-                <h5 class="card-title"><?php echo "$global_gname" ?></h5>
+                <h5 class="card-title"><?php echo $ginfo['gname']; ?></h5>
                 <p class="card-text"><?php echo $ginfo['gaddress']; ?><br><?php echo $ginfo['gphone']; ?><br><?php echo $ginfo['gemail']; ?> </p>
                 <!-- <div class="icon-block">
                   <a href="javascript:void();"><i class="fa fa-facebook bg-facebook text-white"></i></a>

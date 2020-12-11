@@ -1,15 +1,15 @@
 <?php
 include '../global/connection.php';
 session_start();
-if (isset($_POST['glogin'])) {
-	$gname = $_POST['gname'];
-	$gpassword = md5($_POST['gpassword']);
-	$gquery = mysqli_query($con, "SELECT * FROM garage WHERE (gname='$gname' OR gemail='$gname') AND gpassword='$gpassword' ");
+if (isset($_POST['gologin'])) {
+	$goname = $_POST['goname'];
+	$gopassword = md5($_POST['gopassword']);
+	$gquery = mysqli_query($con, "SELECT * FROM garageowner WHERE (goname='$goname' OR goemail='$goemail') AND gopassword='$gopassword' ");
 	$gcheck = mysqli_num_rows($gquery);
 	$grow = mysqli_fetch_assoc($gquery);
 	if ($gcheck >= 1) {
-		$_SESSION['gid'] = $grow['gid'];
-		$_SESSION['gname'] = $grow['gname'];
+		$_SESSION['goid'] = $grow['goid'];
+		$_SESSION['goname'] = $grow['goname'];
 		$gsmsg = "Login successfull,Redirection in 1 sec..";
 		header("refresh:1;url=index.php");
 	} else {
@@ -45,7 +45,7 @@ if (isset($_POST['glogin'])) {
 						<div class="form-group">
 							<label for="exampleInputUsername" class="sr-only">Username/Email</label>
 							<div class="position-relative has-icon-right">
-								<input type="text" id="exampleInputUsername" class="form-control input-shadow" placeholder="Enter Username or Email" name="gname">
+								<input type="text" id="exampleInputUsername" class="form-control input-shadow" placeholder="Enter Username or Email" name="goname">
 								<div class="form-control-position">
 									<i class="icon-user"></i>
 								</div>
@@ -54,18 +54,18 @@ if (isset($_POST['glogin'])) {
 						<div class="form-group">
 							<label for="exampleInputPassword" class="sr-only">Password</label>
 							<div class="position-relative has-icon-right">
-								<input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Enter Password" name="gpassword">
+								<input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Enter Password" name="gopassword">
 								<div class="form-control-position">
 									<i class="icon-lock"></i>
 								</div>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-light btn-block" name="glogin">Sign In</button>
+						<button type="submit" class="btn btn-light btn-block" name="gologin">Sign In</button>
 					</form>
 				</div>
 			</div>
 			<div class="card-footer text-center py-3">
-				<p class="text-warning mb-0">Do not have an account? <a href="shopregister.php"> Sign Up here</a></p>
+				<p class="text-warning mb-0">Do not have an account? <a href="shopownerregister.php"> Sign Up here</a></p>
 			</div>
 		</div>
 	</div>
