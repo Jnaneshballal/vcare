@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     $gname = $g_info['gname'];
     $gphone = $g_info['gphone'];
     $uphone = $v_info['uphone'];
-    $book_service = mysqli_query($con, "INSERT INTO service_info (gid,vno,vownername,sstatus,gname,gphone,uphone)VALUES('$gid','$vno','$vownername','$sstatus','$gname','$gphone','$uphone')");
+    $book_service = mysqli_query($con, "INSERT INTO service_info (gid,vno,vownername,sstatus,gname,gphone,uphone,uid)VALUES('$gid','$vno','$vownername','$sstatus','$gname','$gphone','$uphone','$global_uid')");
     if ($book_service) {
         $smsg = "Service booked,bring your Vehicle to Garage !!";
         header("refresh:2;url=#");
