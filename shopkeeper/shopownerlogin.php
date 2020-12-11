@@ -7,7 +7,7 @@ if (isset($_POST['gologin'])) {
 	$gopassword = md5($_POST['gopassword']);
 	$gquery = mysqli_query($con, "SELECT * FROM garageowner WHERE (goname='$goname' OR goemail='$goemail') AND gopassword='$gopassword' ");
 	$gcheck = mysqli_num_rows($gquery);
-	$grow = mysqli_fetch_assoc($gquery);
+	$grow = mysqli_fetch_assoc($gquery); 
 	if ($gcheck >= 1) {
 		$_SESSION['goid'] = $grow['goid'];
 		$_SESSION['goname'] = $grow['goname'];
