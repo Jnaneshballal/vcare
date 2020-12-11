@@ -1,6 +1,5 @@
 <?php
 include '../global/connection.php';
-<<<<<<< HEAD:shopkeeper/shopownerlogin.php
 session_start();
 if (isset($_POST['gologin'])) {
 	$goname = $_POST['goname'];
@@ -11,25 +10,6 @@ if (isset($_POST['gologin'])) {
 	if ($gcheck >= 1) {
 		$_SESSION['goid'] = $grow['goid'];
 		$_SESSION['goname'] = $grow['goname'];
-=======
-
-if(isset($_SESSION['gid'])){
-	echo "<script> window.location.href='index.php'</script>";
-}
-
-if (isset($_POST['glogin'])) {
-	$gname = $_POST['gname'];
-	$gpassword = md5($_POST['gpassword']);
-	$gquery = mysqli_query($con, "SELECT * FROM garage WHERE (gname='$gname' OR gemail='$gname') AND gpassword='$gpassword' ");
-	$gcheck = mysqli_num_rows($gquery);
-	$grow = mysqli_fetch_assoc($gquery);
-	if ($gcheck >= 1) {
-		session_start();
-
-		$_SESSION['gid'] = $grow['gid'];
-		$_SESSION['gname'] = $grow['gname'];
-
->>>>>>> 3a98350349adc63f2d2f4ebcfe71cb98c384550e:shopkeeper/shoplogin.php
 		$gsmsg = "Login successfull,Redirection in 1 sec..";
 		header("refresh:1;url=index.php");
 	} else {
