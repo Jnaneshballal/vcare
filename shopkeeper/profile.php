@@ -37,54 +37,62 @@ $fetch_ginfotwo = mysqli_query($con, "SELECT * FROM garage WHERE gouid=$global_g
 
         <div class="row md-12">
           <div class="col-md-12 text-center">
-
-            <h2 style="color:MediumBlue">Profile</h2>
-
+            <b>
+              <h2 style="color:MediumBlue; background-color:cyan; font-family:georgia; border-radius:25px;">
+                Profile
+              </h2>
+            </b>
           </div>
         </div>
 
 
+        <!--just for card center-->
+
+        <!--End just for card center-->
 
         <div class="row mt-3">
-          <div class="col-lg-4">
-            <div class="card profile-card-2">
-              <div class="card-img-block"><br>
+            <div class="col-lg-8">
+              <div class="card profile-card-2" style="margin-left: 350px;">
+                <div class="card-img-block"><br>
 
-                <img class="card-img-block" src="./ui/assets/images/c5.jpg" alt="Card image cap">
-              </div>
-              <div class="card-body pt-5">
-                <img src="./ui/assets/images/userr3.jpg" alt="profile-image" class="profile">
-                <h5 class="card-title"><?php echo $ginfo['goname']; ?></h5>
-                <p class="card-text"><?php echo $ginfo['gophone']; ?><br><?php echo $ginfo['goemail']; ?> </p>
-                <div class="icon-block">
-                  <a href="javascript:void();"><i class="fa fa-facebook bg-facebook text-white"></i></a>
-                  <a href="javascript:void();"> <i class="fa fa-twitter bg-twitter text-white"></i></a>
-                  <a href="javascript:void();"> <i class="fa fa-google-plus bg-google-plus text-white"></i></a>
+                  <img class="card-img-block" src="./ui/assets/images/c5.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body pt-5">
+                  <img src="./ui/assets/images/userr3.jpg" alt="profile-image" class="profile">
+                  <h5 class="card-title"><?php echo $ginfo['goname']; ?></h5>
+                  <p class="card-text"><?php echo $ginfo['gophone']; ?><br><?php echo $ginfo['goemail']; ?> </p>
+                  <div class="icon-block">
+                    <a href="javascript:void();"><i class="fa fa-facebook bg-facebook text-white"></i></a>
+                    <a href="javascript:void();"> <i class="fa fa-twitter bg-twitter text-white"></i></a>
+                    <a href="javascript:void();"> <i class="fa fa-google-plus bg-google-plus text-white"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
-
-          </div>
-
+          
           <!--start overlay-->
           <div class="overlay toggle-menu"></div>
           <!--end overlay-->
           <!--End row 1-->
         </div>
 
+
+
         <div class="row md-12">
           <div class="col-md-12 text-center">
-
-            <h2 style="color:MediumBlue">Garages</h2>
-
+            <b>
+              <h2 style="color:MediumBlue; background-color:cyan; font-family:georgia; border-radius:25px;">
+                Garages
+              </h2>
+            </b>
           </div>
         </div>
 
         <div class="row md-12">
-        <?php while ($ginfotwo = mysqli_fetch_assoc($fetch_ginfotwo)) {
+          <?php while ($ginfotwo = mysqli_fetch_assoc($fetch_ginfotwo)) {
 
-        ?>
-          
+          ?>
+
             <div class="col-md-4">
               <div class="card profile-card-2">
                 <div class="card-img-block"><br>
@@ -93,7 +101,7 @@ $fetch_ginfotwo = mysqli_query($con, "SELECT * FROM garage WHERE gouid=$global_g
                 </div>
                 <div class="card-body pt-5">
                   <img src="./ui/assets/images/c2.png" alt="profile-image" class="profile">
-                  <h5 class="card-title"><?php echo $ginfotwo['gname']; ?></h5> 
+                  <h5 class="card-title"><?php echo $ginfotwo['gname']; ?></h5>
                   <p class="card-text"><?php echo $ginfotwo['gaddress']; ?><br><?php echo $ginfotwo['gphone']; ?><br><?php echo $ginfotwo['gemail']; ?> </p>
                   <div class="icon-block">
                     <a href="javascript:void();"><i class="fa fa-facebook bg-facebook text-white"></i></a>
@@ -105,12 +113,12 @@ $fetch_ginfotwo = mysqli_query($con, "SELECT * FROM garage WHERE gouid=$global_g
 
             </div>
           <?php } ?>
-          </div>
+        </div>
 
 
 
 
-          <!-- End container-fluid-->
+        <!-- End container-fluid-->
       </div>
       <!--End content-wrapper-->
     </div>

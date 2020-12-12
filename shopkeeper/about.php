@@ -30,7 +30,11 @@ include '../global/garageaccesscontrol.php';
         <div class="row md-12">
           <div class="col-md-12 text-center">
 
-            <h2 style="color:MediumBlue">About Us</h2>
+            <b>
+              <h2 style="color:MediumBlue; background-color:cyan; font-family:georgia; border-radius:25px;">
+                About Us
+              </h2>
+            </b>
 
           </div>
         </div>

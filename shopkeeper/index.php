@@ -34,15 +34,21 @@ if (!$gologin) {
 
         <div class="row md-12">
           <div class="col-md-12 text-center">
-
-            <h2 style="color:MediumBlue">Welcome to VCare</h2>
-
+            <b>
+              <h2 style="color:MediumBlue; background-color:cyan; font-family:georgia; border-radius:25px;">
+                Welcome to VCare
+              </h2>
+            </b>
           </div>
         </div>
 
 
         <div>
-          <img src="./ui/assets/images/carbike.gif" width="100%">
+          <div class="col-md-12 text-center">
+
+            <img src="./ui/assets/images/carbike.gif" width="65%" height="40%">
+
+          </div>
         </div>
 
         <!--start overlay-->
