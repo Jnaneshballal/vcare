@@ -6,14 +6,14 @@ if (isset($_POST['gologin'])) {
 	$gopassword = md5($_POST['gopassword']);
 	$gquery = mysqli_query($con, "SELECT * FROM garageowner WHERE (goname='$goname' OR goemail='$goname') AND gopassword='$gopassword' ");
 	$gcheck = mysqli_num_rows($gquery);
-	$grow = mysqli_fetch_assoc($gquery); 
+	$grow = mysqli_fetch_assoc($gquery);
 	if ($gcheck >= 1) {
 		$_SESSION['goid'] = $grow['goid'];
 		$_SESSION['goname'] = $grow['goname'];
 		$gsmsg = "Login successfull,Redirection in 1 sec..";
 		header("refresh:1;url=index.php");
 	} else {
-		$gemsg ="Error!!";
+		$gemsg = "Error!!";
 	}
 }
 ?>
@@ -33,21 +33,21 @@ if (isset($_POST['gologin'])) {
 						<img src="./ui/assets/images/fflogo-icon.png" alt="logo icon">
 					</div>
 					<div class="card-title text-uppercase text-center py-3">Sign In</div>
+					<?php
+					if (isset($gsmsg)) {
+						echo $gsmsg;
+					}
+					if (isset($gemsg)) {
+						echo $gemsg;
+					}
+					?>
 					<form method="POST">
-						<?php
-						if (isset($gsmsg)) {
-							echo $gsmsg;
-						}
-						if (isset($gemsg)) {
-							echo $gemsg;
-						}
-						?>
 						<div class="form-group">
-							<label for="exampleInputUsername" class="sr-only">Username/Email</label>
+							<label for="exampleInputPassword" class="sr-only">Password</label>
 							<div class="position-relative has-icon-right">
-								<input type="text" id="exampleInputUsername" class="form-control input-shadow" placeholder="Enter Username or Email" name="goname">
+								<input type="text" id="exampleInputPassword" class="form-control input-shadow" placeholder="Enter Username" name="goname">
 								<div class="form-control-position">
-									<i class="icon-user"></i>
+									<i class="icon-lock"></i>
 								</div>
 							</div>
 						</div>
