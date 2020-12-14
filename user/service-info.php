@@ -24,7 +24,7 @@ $s_query = mysqli_query($con, "SELECT * FROM service_info WHERE uid='$global_uid
     <div id="right-panel" class="right-panel">
         <?php include 'ui/header.php' ?>
         <?php while ($s_info = mysqli_fetch_assoc($s_query)) { ?>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <aside class="profile-nav alt">
                     <section class="card" style="border:2px solid red;border-radius:5px;">
                         <div class="card-header user-header alt bg-dark">
@@ -50,8 +50,10 @@ $s_query = mysqli_query($con, "SELECT * FROM service_info WHERE uid='$global_uid
                             </li>
                             <?php if ($s_info['sstatus'] == "0") {
                                 $status = "Under Service";
-                            } else {
+                            } else if ($s_info['sstatus'] == "1"){
                                 $sstatus = "Service Done Vehicle Ready to collect.";
+                            }else if ($s_info['sstatus'] == "3"){
+                                $sdstatus = "Vehicle Delivered..";
                             }
                             ?>
                             <?php if (isset($status)) { ?>
@@ -60,6 +62,11 @@ $s_query = mysqli_query($con, "SELECT * FROM service_info WHERE uid='$global_uid
                                 </li>
                             <?php } ?>
                             <?php if (isset($sstatus)) { ?>
+                                <li class="list-group-item">
+                                    <i class="fa fa-home"></i> Vehicle Status <span class="badge pull-right" style="color:green;"><?php echo $sstatus; ?></span>
+                                </li>
+                            <?php } ?>
+                            <?php if (isset($sdstatus)) { ?>
                                 <li class="list-group-item">
                                     <i class="fa fa-home"></i> Vehicle Status <span class="badge pull-right" style="color:green;"><?php echo $sstatus; ?></span>
                                 </li>

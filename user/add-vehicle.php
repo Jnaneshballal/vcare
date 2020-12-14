@@ -12,7 +12,8 @@ if (isset($_POST['success'])) {
     $vemissionexdate = $_POST['vemissionexdate'];
     $vinsureexdate = $_POST['vinsureexdate'];
     $v_check = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vno='$vno'");
-    if ($v_check >= 1) {
+    $v_count=mysqli_num_rows($v_check);
+    if ($v_count >= 1) {
         $emsg = "Vehicle Already Registered!!";
     } else {
         $query = mysqli_query($con, "INSERT INTO vehicle_info(vuid,vownername,vno,vengineno,vchassino,vmodel,vemissionexdate,vinsureexdate)VALUES('$global_uid','$vownername','$vno','$vengineno','$vchassino','$vmodel','$vemissionexdate','$vinsureexdate')");
