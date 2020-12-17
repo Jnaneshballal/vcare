@@ -11,7 +11,7 @@
           <input type="text" class="form-control" placeholder="Enter keywords">
           <a href="javascript:void();"><i class="icon-magnifier"></i></a>
         </form> -->
-        Hello, <?php echo strtoupper($global_goname); ?>
+        Hello, <?php echo strtoupper($global_gname); ?>
       </li>
     </ul>
 
@@ -26,7 +26,7 @@
               <div class="media">
                 <div class="avatar"><img class="align-self-start mr-3" src="./ui/assets/images/userr3.jpg" alt="user avatar"></div>
                 <div class="media-body">
-                  <h6 class="mt-2 user-title"><?php echo "$global_goname" ?></h6>
+                  <h6 class="mt-2 user-title"></h6>
                 </div>
               </div>
             </a>

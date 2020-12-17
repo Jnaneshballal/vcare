@@ -3,21 +3,20 @@ include '../../global/connection.php';
 if (isset($_POST['register'])) {
     $uname = $_POST['uname'];
     $uemail = $_POST['uemail'];
-    $uphone=$_POST['uphone'];
+    $uphone = $_POST['uphone'];
     $uaddress = $_POST['uaddress'];
     $ucity = $_POST['ucity'];
-    $upin = $_POST['upin'];
     $upassword = md5($_POST['upassword']);
     $cpassword = md5($_POST['upassword']);
     if ($upassword != $cpassword) {
         $emsg = "Password Not Matching!!";
     } else {
-        $query = mysqli_query($con, "SELECT * FROM user WHERE uemail='$uemail'");
-        $count = mysqli_num_rows($query);
+        $check_query = mysqli_query($con, "SELECT * FROM user_info WHERE uemail='$uemail'");
+        $count = mysqli_num_rows($check_query);
         if ($count > 0) {
             $emsg = "User Already registered";
         } else {
-            $insert_Query = mysqli_query($con, "INSERT INTO user_info (uname,uemail,uphone,uaddress,ucity,upin,upassword) VALUES ('$uname','$uemail','$uphone','$uaddress','$ucity','$upin','$upassword')");
+            $insert_Query = mysqli_query($con, "INSERT INTO user_info (uname,uemail,uphone,uaddress,ucity,upassword) VALUES ('$uname','$uemail','$uphone','$uaddress','$ucity','$upassword')");
             if ($insert_Query) {
                 header("refresh:1;url=./login.php");
                 $smsg = "Registred Successfully.Redirecting....";
@@ -113,10 +112,6 @@ if (isset($_POST['register'])) {
                         <div class="form-group">
                             <label>City</label>
                             <input type="text" class="form-control" placeholder="City" name="ucity">
-                        </div>
-                        <div class="form-group">
-                            <label>Pin</label>
-                            <input type="number" class="form-control" placeholder="Postal code" name="upin">
                         </div>
                         <div class="form-group">
                             <label>Password</label>

@@ -1,19 +1,19 @@
 <?php
 include '../global/connection.php';
 session_start();
-if (isset($_POST['gologin'])) {
-	$goname = $_POST['goname'];
-	$gopassword = md5($_POST['gopassword']);
-	$gquery = mysqli_query($con, "SELECT * FROM garageowner WHERE (goname='$goname' OR goemail='$goname') AND gopassword='$gopassword' ");
-	$gcheck = mysqli_num_rows($gquery);
-	$grow = mysqli_fetch_assoc($gquery);
-	if ($gcheck >= 1) {
-		$_SESSION['goid'] = $grow['goid'];
-		$_SESSION['goname'] = $grow['goname'];
+if (isset($_POST['glogin'])) {
+	$gname = $_POST['gname'];
+	$gpassword = md5($_POST['gpassword']);
+	$garage_query = mysqli_query($con, "SELECT * FROM garage WHERE (gname='$gname' OR gemail='$gname') AND gpassword='$gpassword' ");
+	$garage_check = mysqli_num_rows($garage_query);
+	$grow = mysqli_fetch_assoc($garage_query);
+	if ($garage_check >= 1) {
+		$_SESSION['gid'] = $grow['gid'];
+		$_SESSION['gname'] = $grow['gname'];
 		$gsmsg = "Login successfull,Redirection in 1 sec..";
 		header("refresh:1;url=index.php");
 	} else {
-		$gemsg = "Error!!";
+		$gemsg = mysqli_error($con);
 	}
 }
 ?>
@@ -45,7 +45,7 @@ if (isset($_POST['gologin'])) {
 						<div class="form-group">
 							<label for="exampleInputPassword" class="sr-only">Password</label>
 							<div class="position-relative has-icon-right">
-								<input type="text" id="exampleInputPassword" class="form-control input-shadow" placeholder="Enter Username" name="goname">
+								<input type="text" id="exampleInputPassword" class="form-control input-shadow" placeholder="Enter Username" name="gname">
 								<div class="form-control-position">
 									<i class="icon-lock"></i>
 								</div>
@@ -54,13 +54,13 @@ if (isset($_POST['gologin'])) {
 						<div class="form-group">
 							<label for="exampleInputPassword" class="sr-only">Password</label>
 							<div class="position-relative has-icon-right">
-								<input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Enter Password" name="gopassword">
+								<input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Enter Password" name="gpassword">
 								<div class="form-control-position">
 									<i class="icon-lock"></i>
 								</div>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-light btn-block" name="gologin">Sign In</button>
+						<button type="submit" class="btn btn-light btn-block" name="glogin">Sign In</button>
 					</form>
 				</div>
 			</div>

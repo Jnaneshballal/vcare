@@ -50,25 +50,17 @@ $s_query = mysqli_query($con, "SELECT * FROM service_info WHERE uid='$global_uid
                             </li>
                             <?php if ($s_info['sstatus'] == "0") {
                                 $status = "Under Service";
-                            } else if ($s_info['sstatus'] == "1"){
-                                $sstatus = "Service Done Vehicle Ready to collect.";
-                            }else if ($s_info['sstatus'] == "3"){
-                                $sdstatus = "Vehicle Delivered..";
+                            } 
+                            if ($s_info['sstatus'] == "1"){
+                                $status = "Service Done Vehicle Ready to collect.";
+                            } 
+                            if ($s_info['sstatus'] == "3"){
+                                $status = "Vehicle Delivered..";
                             }
                             ?>
                             <?php if (isset($status)) { ?>
                                 <li class="list-group-item">
-                                    <i class="fa fa-clock-o"></i> Vehicle Status <span class="badge pull-right" style="color:red;"><?php echo $status; ?></span>
-                                </li>
-                            <?php } ?>
-                            <?php if (isset($sstatus)) { ?>
-                                <li class="list-group-item">
-                                    <i class="fa fa-home"></i> Vehicle Status <span class="badge pull-right" style="color:green;"><?php echo $sstatus; ?></span>
-                                </li>
-                            <?php } ?>
-                            <?php if (isset($sdstatus)) { ?>
-                                <li class="list-group-item">
-                                    <i class="fa fa-home"></i> Vehicle Status <span class="badge pull-right" style="color:green;"><?php echo $sstatus; ?></span>
+                                    <i class="fa fa-home"></i> Vehicle Status <span class="badge pull-right" style="color:red;"><?php echo $status; ?></span>
                                 </li>
                             <?php } ?>
                         </ul>

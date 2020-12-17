@@ -6,25 +6,30 @@ if (!$login) {
 }
 date_default_timezone_set('Asia/Kolkata');
 $date=date("d-m-Y H:i:s");
-$gid = $_GET['gid'];
-$vid = $_GET['vid'];
-$gquery = mysqli_query($con, "SELECT * FROM garage WHERE gid='$gid'");
-$g_info = mysqli_fetch_assoc($gquery);
-$vquery = mysqli_query($con, "SELECT * FROM user_info JOIN vehicle_info WHERE vehicle_info.vuid='$global_uid' AND vehicle_info.vid='$vid'");
-$v_info = mysqli_fetch_assoc($vquery);
-if (isset($_POST['submit'])) {
-    $vno = $v_info['vno'];
-    $vownername = $v_info['uname'];
-    $sstatus ="0";
-    $gname = $g_info['gname'];
-    $gphone = $g_info['gphone'];
-    $uphone = $v_info['uphone'];
-    $book_service = mysqli_query($con, "INSERT INTO service_info (gid,vno,vownername,sstatus,gname,gphone,uphone,uid,sdate)VALUES('$gid','$vno','$vownername','$sstatus','$gname','$gphone','$uphone','$global_uid','$date')");
-    if ($book_service) {
-        $smsg = "Service booked,bring your Vehicle to Garage !!";
-        header("refresh:2;url=#");
-    } else {
-        $emsg = mysqli_error($con);
+$vid=$_GET['vid'];
+$gid=$_GET['gid'];
+$user_query=mysqli_query($con,"SELECT * FROM user_info WHERE uid='$global_uid'");
+$user_info=mysqli_fetch_assoc($user_query);
+$garage_query=mysqli_query($con,"SELECT * FROM garage WHERE gid='$gid'");
+$garage_info=mysqli_fetch_assoc($garage_query);
+$vehicle_query=mysqli_query($con,"SELECT * FROM vehicle_info WHERE vid='$vid'");
+$vehicle_info=mysqli_fetch_assoc($vehicle_query);
+$vno=$vehicle_info['vno'];
+$vownername=$vehicle_info['vownername'];
+$sstatus=0;
+$gname=$garage_info['gname'];
+$gphone=$garage_info['gphone'];
+$uphone=$user_info['uphone'];
+$uemail=$user_info['uemail'];
+$scost=0;
+if(isset($_POST['submit'])){
+    $insert_service=mysqli_query($con,"INSERT INTO service_info (gid,vno,vownername,sstatus,gname,gphone,uphone,uid,sdate,uemail,scost) VALUES ('$gid','$vno','$vownername','$sstatus','$gname','$gphone','$uphone','$global_uid','$date','$uemail','$scost') ");
+    if($insert_service)
+    {
+        $smsg="Service Booked";
+    }
+    else{
+        $emsg="Error";
     }
 }
 ?>
@@ -71,19 +76,19 @@ if (isset($_POST['submit'])) {
                     <div class="card-body card-block">
                         <div class="row form-group">
                             <div class="col col-md-5"><label for="hf-email" class=" form-control-label"><b>Vehicle Number :</b></label></div>
-                            <div class="col-12 col-md-5"><label id="hf-email" name="vno" class="form-control-label"><strong style="color:red;"><?php echo strtoupper($v_info['vno']); ?></strong></label></div>
+                            <div class="col-12 col-md-5"><label id="hf-email" name="vno" class="form-control-label"><strong style="color:red;"><?php echo strtoupper($vehicle_info['vno']); ?></strong></label></div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-5"><label for="hf-email" class=" form-control-label"><b>Garage Name :</b></label></div>
-                            <div class="col-12 col-md-5"><label id="hf-email" name="gname" class="form-control-label"><strong style="color:red;"><?php echo $g_info['gname']; ?></strong></label></div>
+                            <div class="col-12 col-md-5"><label id="hf-email" name="gname" class="form-control-label"><strong style="color:red;"><?php echo $garage_info['gname']; ?></strong></label></div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-5"><label for="hf-email" class=" form-control-label"><b>Contact Number :</b></label></div>
-                            <div class="col-12 col-md-5"><label id="hf-email" name="gphone" class="form-control-label"><strong style="color:red;"><?php echo $g_info['gphone']; ?></strong></label></div>
+                            <div class="col-12 col-md-5"><label id="hf-email" name="gphone" class="form-control-label"><strong style="color:red;"><?php echo $garage_info['gphone']; ?></strong></label></div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-5"><label for="hf-email" class=" form-control-label"><b>Garage Address :</b></label></div>
-                            <div class="col-12 col-md-5"><label id="hf-email" name="gaddress" class="form-control-label"><strong style="color:red;"><?php echo $g_info['gaddress']; ?></strong></label></div>
+                            <div class="col-12 col-md-5"><label id="hf-email" name="gaddress" class="form-control-label"><strong style="color:red;"><?php echo $garage_info['gaddress']; ?></strong></label></div>
                         </div>
                     </div>
                     <div class="card-footer">

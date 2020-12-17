@@ -1,6 +1,6 @@
 <?php
 include '../global/garageaccesscontrol.php';
-if (!$gologin) {
+if (!$glogin) {
   echo "<script>window.location.href='shoplogin.php'; </script>";
 }
 // $fetch_ginfo = mysqli_query($con, "SELECT * FROM garage WHERE gouid='$global_goid'");
@@ -36,7 +36,7 @@ if (!$gologin) {
           <div class="col-md-12 text-center">
             <b>
               <h2 style="color:MediumBlue; background-color:cyan; font-family:georgia; border-radius:25px;">
-                Welcome to VCare
+                Welcome to VCare<?php echo $global_gid;?>
               </h2>
             </b>
           </div>
