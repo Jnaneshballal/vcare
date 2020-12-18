@@ -99,7 +99,7 @@ include '../global/garageaccesscontrol.php';
                 <p class="card-text">
                   <i class="fa fa-code" aria-hidden="true"></i>Back End Developer<br>
                   <i class="fa fa-phone" aria-hidden="true"></i>: 9964598422<br>
-                  <i class="fa fa-envelope-open-o" aria-hidden="true"></i> jananesh.b44@gmail.com
+                  <i class="fa fa-envelope-open-o" aria-hidden="true"></i> jnanesh024@gmail.com
                 </p>
               </div>
             </div>

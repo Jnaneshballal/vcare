@@ -59,7 +59,7 @@ if (isset($_POST['gregister'])) {
 					}
 					?>
 					<?php if (isset($smsg)) {
-						echo $smsg;0
+						echo $smsg;
 					}
 					?>
 					<!-- <hr width="100%"> -->
