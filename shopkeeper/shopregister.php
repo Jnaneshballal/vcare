@@ -2,11 +2,11 @@
 include '../global/connection.php';
 if (isset($_POST['gregister'])) {
 	$goname = $_POST['goname'];
-	$gname=$_POST['gname'];
+	$gname = $_POST['gname'];
 	$gemail = $_POST['gemail'];
 	$gphone = $_POST['gphone'];
-	$gaddress=$_POST['gaddress'];
-	$gcity=$_POST['gcity'];
+	$gaddress = $_POST['gaddress'];
+	$gcity = $_POST['gcity'];
 	$gpassword = md5($_POST['gpassword']);
 	$garage_query = mysqli_query($con, "SELECT * FROM garage WHERE gemail='$gemail'");
 	$gcount = mysqli_num_rows($arage_query);
@@ -59,10 +59,10 @@ if (isset($_POST['gregister'])) {
 					}
 					?>
 					<?php if (isset($smsg)) {
-						echo $smsg;
+						echo $smsg;0
 					}
 					?>
-					<hr width="100%">
+					<!-- <hr width="100%"> -->
 					<form method="POST">
 
 						<div class="form-group">
@@ -121,8 +121,9 @@ if (isset($_POST['gregister'])) {
 							<div class="position-relative has-icon-right">
 								<input type="text" class="form-control input-shadow" placeholder="Enter city" name="gcity">
 								<div class="form-control-position">
-									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tablet-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-										<path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M12.166 8.94C12.696 7.867 13 6.862 13 6A5 5 0 0 0 3 6c0 .862.305 1.867.834 2.94.524 1.062 1.234 2.12 1.96 3.07A31.481 31.481 0 0 0 8 14.58l.208-.22a31.493 31.493 0 0 0 1.998-2.35c.726-.95 1.436-2.008 1.96-3.07zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+										<path fill-rule="evenodd" d="M8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
 									</svg>
 								</div>
 							</div>
@@ -143,7 +144,7 @@ if (isset($_POST['gregister'])) {
 				</div>
 			</div>
 			<div class="card-footer text-center py-3">
-				<p class="text-warning mb-0">Already have an account? <a href="shopownerlogin.php"> Sign In here</a></p>
+				<p class="text-warning mb-0">Already have an account? <a href="shoplogin.php"> Sign In here</a></p>
 			</div>
 		</div>
 	</div>

@@ -36,7 +36,7 @@ if (!$glogin) {
           <div class="col-md-12 text-center">
             <b>
               <h2 style="color:MediumBlue; background-color:cyan; font-family:georgia; border-radius:25px;">
-                Welcome to VCare<?php echo $global_gid;?>
+                Welcome to VCare 
               </h2>
             </b>
           </div>

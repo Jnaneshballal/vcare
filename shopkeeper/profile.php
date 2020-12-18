@@ -42,24 +42,24 @@ $ginfo = mysqli_fetch_assoc($fetch_garage_info);
           </div>
         </div>
         <div class="row mt-3">
-            <div class="col-lg-8">
-              <div class="card profile-card-2" style="margin-left: 350px;">
-                <div class="card-img-block"><br>
+          <div class="col-lg-8">
+            <div class="card profile-card-2" style="margin-left: 350px;">
+              <div class="card-img-block"><br>
 
-                  <img class="card-img-block" src="./ui/assets/images/c5.jpg" alt="Card image cap">
-                </div>
-                <div class="card-body pt-5">
-                  <img src="./ui/assets/images/userr3.jpg" alt="profile-image" class="profile">
-                  <h5 class="card-title"><?php echo $ginfo['gname']; ?></h5>
-                  <p class="card-text">
+                <img class="card-img-block" src="./ui/assets/images/c5.jpg" alt="Card image cap">
+              </div>
+              <div class="card-body pt-5">
+                <img src="./ui/assets/images/userr3.jpg" alt="profile-image" class="profile">
+                <h5 class="card-title"><?php echo $ginfo['gname']; ?></h5>
+                <p class="card-text">
                   <?php echo $ginfo['goname']; ?><br>
-                    <?php echo $ginfo['gphone']; ?><br>
+                  <?php echo $ginfo['gphone']; ?><br>
                   <?php echo $ginfo['gemail']; ?><br>
-                  <?php echo $ginfo['gaddress'];?>,<?php echo $ginfo['gcity']; ?><br>
+                  <?php echo $ginfo['gaddress']; ?>,<?php echo $ginfo['gcity']; ?><br>
                 </p>
-                </div>
               </div>
             </div>
+          </div>
           <!--start overlay-->
           <div class="overlay toggle-menu"></div>
           <!--end overlay-->

@@ -39,6 +39,73 @@ include '../global/garageaccesscontrol.php';
           </div>
         </div>
 
+        <div>
+
+          <h3 style="font-family:times-new-roman; color:cyan; font-size:40px">Introduction :</h3>
+          <p style="font-family:times-new-roman; color:black; font-size:25px; text-align:left;">
+
+            V-Care helps user to find the most reliable vehicle services around
+            and look for mechanics near them. The user can contact the service provider or
+            mechanic where they come to your doorstep or location offering a hassle-free service.<br>
+            V-Care also provides the service of tracking and reminding the vehicle
+            details such as PUC, Insurance expiry date, Next service etc where it frees the user
+            from burden of remembering these.
+
+          </p>
+        </div>
+
+        <div class="row md-12">
+          <div class="col-md-12 text-center">
+
+            <b>
+              <h2 style="color:MediumBlue; background-color:cyan; font-family:georgia; border-radius:25px;">
+                Developers
+              </h2>
+            </b>
+
+          </div>
+        </div>
+
+        <div class="row md-12" style="margin-left: 30px;">
+          <div class="col-md-4">
+            <div class="card profile-card-2">
+              <div class="card-img-block"><br>
+                <img class="card-img-block" src="./ui/assets/images/d3.jpg" alt="Card image cap">
+              </div>
+              <div class="card-body pt-5">
+                <img src="./ui/assets/images/userr3.jpg" alt="profile-image" class="profile">
+                <u>
+                  <h5 class="card-title">Akash Raj</h5>
+                </u>
+                <p class="card-text">
+                  <i class="fa fa-code" aria-hidden="true"></i>Front End Developer<br>
+                  <i class="fa fa-phone" aria-hidden="true"></i> : 9964588750<br>
+                  <i class="fa fa-envelope-open-o" aria-hidden="true"></i> akashraj.jain2@gmail.com
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4" style="margin-left: 300px;">
+            <div class="card profile-card-2">
+              <div class="card-img-block"><br>
+                <img class="card-img-block" src="./ui/assets/images/d3.jpg" alt="Card image cap">
+              </div>
+              <div class="card-body pt-5">
+                <img src="./ui/assets/images/userr3.jpg" alt="profile-image" class="profile">
+                <u>
+                  <h5 class="card-title">Jnanesh Ballal</h5>
+                </u>
+                <p class="card-text">
+                  <i class="fa fa-code" aria-hidden="true"></i>Back End Developer<br>
+                  <i class="fa fa-phone" aria-hidden="true"></i>: 9964598422<br>
+                  <i class="fa fa-envelope-open-o" aria-hidden="true"></i> jananesh.b44@gmail.com
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
 
         <!--start overlay-->

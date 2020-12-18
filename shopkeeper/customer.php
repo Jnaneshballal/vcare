@@ -28,9 +28,10 @@ $service_query = mysqli_query($con, "SELECT * FROM service_info WHERE gid='$glob
         <div class="clearfix"></div>
 
         <div class="content-wrapper">
-            <?php while ($service_info = mysqli_fetch_assoc($service_query)) { ?>
-                <div class="container-fluid">
-                    <div class="row md-12">
+
+            <div class="container-fluid">
+                <div class="row md-12">
+                    <?php while ($service_info = mysqli_fetch_assoc($service_query)) { ?>
                         <div class="col-md-4">
                             <div class="card profile-card-2">
                                 <div class="card-img-block"><br>
@@ -57,9 +58,10 @@ $service_query = mysqli_query($con, "SELECT * FROM service_info WHERE gid='$glob
                             </div>
 
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
-            <?php } ?>
+            </div>
+
         </div>
         <?php include './ui/jslink.php'; ?>
 </body>
