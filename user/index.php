@@ -29,7 +29,7 @@ if ($v_count >= 1) {
     <?php include 'ui/leftbar.php'; ?>
     <div id="right-panel" class="right-panel">
         <?php include 'ui/header.php' ?>
-        <div class="content mt-3">
+        <div class="content mt-4">
             <div class="col-sm-12">
                 <?php if ($vehicle) { ?>
                     <div class="alert alert-primary" role="alert">
@@ -39,34 +39,54 @@ if ($v_count >= 1) {
                 <?php if (!$vehicle) {
                     $fetch_info = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vuid=$global_uid");
                     // $count=mysqli_num_rows($fetch_info);
-                    
+
                     while ($info = mysqli_fetch_assoc($fetch_info)) {
                 ?>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <aside class="profile-nav alt">
                                 <section class="card">
                                     <div class="card-header user-header alt bg-dark">
                                         <div class="media">
                                             <!-- <a href="#"> -->
-                                                <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="ui/images/car.png">
+                                            <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="ui/images/car.png">
                                             <!-- </a> -->
                                             <div class="media-body">
-                                                <h2 class="text-light display-6"><?php echo $info['vmodel'];?></h2>
-                                                <p><?php echo $info['vno'];?></p>
+                                                <h2 class="text-light display-6"><?php echo $info['vmodel']; ?></h2>
+                                                <p><?php echo $info['vno']; ?></p>
                                             </div>
                                         </div>
                                     </div>
-
+                                    <?php
+                                    $now = time();
+                                    $eedate = strtotime($info['vemissionexdate']);
+                                    $diff = $eedate - $now;
+                                    $dcount = round($diff / (60 * 60 * 24));
+                                    if($dcount<0){
+                                        $dcount="Expired";
+                                    }
+                                    else{
+                                        $dcount="$dcount Days Left";
+                                    }
+                                    $iedate = strtotime($info['vinsureexdate']);
+                                    $idiff = $iedate - $now;
+                                    $idcount = round($idiff / (60 * 60 * 24));
+                                    if($idcount<0){
+                                        $idcount="Expired";
+                                    }
+                                    else{
+                                        $idcount="$idcount Days Left";
+                                    }
+                                    ?>
 
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
-                                            <i class="fa fa-user"></i> Owner Name <span class="badge pull-right"><?php echo strtoupper($info['vownername']);?></span>
+                                            <i class="fa fa-user"></i> Owner Name <span class="badge pull-right"><?php echo strtoupper($info['vownername']); ?></span>
                                         </li>
                                         <li class="list-group-item">
-                                             <i class="fa fa-calendar"></i> Emission Expire Date <span class="badge badge-danger pull-right"><?php echo $info['vemissionexdate'];?></span>
+                                            <i class="fa fa-calendar"></i>Emission Expire Date <span class="badge badge-danger"> <?php echo $dcount;?></span> <span class="badge badge-primary pull-right"><?php echo $info['vemissionexdate']; ?></span>
                                         </li>
                                         <li class="list-group-item">
-                                             <i class="fa fa-calendar"></i> Insurance Expire Date <span class="badge badge-danger pull-right"><?php echo $info['vinsureexdate'];?></span>
+                                            <i class="fa fa-calendar"></i> Insurance Expire Date <span class="badge badge-danger"> <?php echo $idcount;?></span> <span class="badge badge-primary pull-right"><?php echo $info['vinsureexdate']; ?></span>
                                         </li>
                                         <!-- <li class="list-group-item">
                                              <i class="fa fa-comments-o"></i> Message <span class="badge badge-warning pull-right r-activity">03</span>
