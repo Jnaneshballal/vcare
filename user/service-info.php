@@ -46,15 +46,15 @@ $s_query = mysqli_query($con, "SELECT * FROM service_info WHERE uid='$global_uid
                                 <i class="fa fa-phone"></i> Garage Contact Number <span class="badge pull-right"><?php echo $s_info['gphone']; ?></span>
                             </li>
                             <li class="list-group-item">
-                                <i class="fa fa-phone"></i> Service Keep Date <span class="badge pull-right"><?php echo $s_info['sdate']; ?></span>
+                                <i class="fa fa-calendar"></i> Service Keep Date <span class="badge pull-right"><?php echo $s_info['sdate']; ?></span>
                             </li>
                             <?php if ($s_info['sstatus'] == "0") {
                                 $status = "Under Service";
-                            } 
-                            if ($s_info['sstatus'] == "1"){
+                            }
+                            if ($s_info['sstatus'] == "1") {
                                 $status = "Service Done Vehicle Ready to collect.";
-                            } 
-                            if ($s_info['sstatus'] == "3"){
+                            }
+                            if ($s_info['sstatus'] == "3") {
                                 $status = "Vehicle Delivered..";
                             }
                             ?>
@@ -63,6 +63,17 @@ $s_query = mysqli_query($con, "SELECT * FROM service_info WHERE uid='$global_uid
                                     <i class="fa fa-home"></i> Vehicle Status <span class="badge pull-right" style="color:red;"><?php echo $status; ?></span>
                                 </li>
                             <?php } ?>
+                            <li class="list-group-item">
+                                <i class="fa fa-phone"></i> Service Cost <span class="badge pull-right"><?php echo $s_info['scost']; ?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <span style="color:red;"><i class="fa fa-info"></i>) You can make payment offline or online</span>
+                                <a href="payment.php?sid=<?php echo $s_info['sid']; ?>">
+                                    <button type="button" class="btn btn-primary mb-1 pull-right" data-toggle="modal" data-target="#mediumModal" style="border-radius:100px;" onclick="delvehicle(this)">
+                                        <i class="fa fa-money"> Pay</i>
+                                    </button>
+                                </a>
+                            </li>
                         </ul>
                     </section>
                 </aside>
