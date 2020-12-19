@@ -51,7 +51,7 @@
                     </li> -->
 
                 <h3 class="menu-title">About</h3><!-- /.menu-title -->
-                <li><a href="#">|<i class="fa fa-car"></i>| V-CARE</a></li>
+                <li><a href="about.php">|<i class="fa fa-car"></i>| About</a></li>
                 <li><a href="developer.php">|<i class="fa fa-desktop"></i>| Development Team</a></li>
                 <!-- <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
