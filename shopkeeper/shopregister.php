@@ -15,7 +15,7 @@ if (isset($_POST['gregister'])) {
 	} else {
 		$garage_insert_Query = mysqli_query($con, "INSERT INTO garage (goname,gname,gemail,gphone,gaddress,gcity,gpassword) VALUES ('$goname','$gname','$gemail','$gphone','$gaddress','$gcity','$gpassword')");
 		if ($garage_insert_Query) {
-			header("refresh:1;url=./shopownerlogin.php");
+			header("refresh:1;url=./shoplogin.php");
 			$smsg = "Registerd Successfully redirecting ......";
 		} else {
 			$gemsg = "ERROR !!!";
