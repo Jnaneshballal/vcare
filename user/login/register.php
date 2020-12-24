@@ -95,31 +95,31 @@ if (isset($_POST['register'])) {
                     <form method="POST">
                         <div class="form-group">
                             <label>User Name</label>
-                            <input type="text" class="form-control" placeholder="User Name" name="uname">
+                            <input type="text" class="form-control" placeholder="User Name" name="uname" required="true">
                         </div>
                         <div class="form-group">
                             <label>Email address</label>
-                            <input type="email" class="form-control" placeholder="Email" name="uemail">
+                            <input type="email" class="form-control" placeholder="Email" name="uemail" required="true">
                         </div>
                         <div class="form-group">
                             <label>Contact Number</label>
-                            <input type="number" class="form-control" placeholder="Phone number" name="uphone">
+                            <input type="number" class="form-control" placeholder="Phone number" name="uphone" required="true">
                         </div>
                         <div class="form-group">
                             <label>Address</label>
-                            <textarea class="form-control" height="50" placeholder="Address" name="uaddress"></textarea>
+                            <textarea class="form-control" height="50" placeholder="Address" name="uaddress" required="true"></textarea>
                         </div>
                         <div class="form-group">
                             <label>City</label>
-                            <input type="text" class="form-control" placeholder="City" name="ucity">
+                            <input type="text" class="form-control" placeholder="City" name="ucity" required="true">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password" name="upassword">
+                            <input type="password" class="form-control" placeholder="Password" name="upassword" required="true">
                         </div>
                         <div class="form-group">
                             <label>Re-Type Password</label>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" class="form-control" placeholder="Password" required="true">
                         </div>
                         <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" name="register">Register</button>
                         <div class="register-link m-t-15 text-center">

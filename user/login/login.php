@@ -79,11 +79,11 @@ if (isset($_POST['login'])) {
                     <form method="POST">
                         <div class="form-group">
                             <label>Email address</label>
-                            <input type="Text" class="form-control" placeholder="username or email" name="uname">
+                            <input type="Text" class="form-control" placeholder="username or email" name="uname" required="true">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password" name="psw">
+                            <input type="password" class="form-control" placeholder="Password" name="psw" required="true">
                         </div>
                         <div class="checkbox">
                             <label>

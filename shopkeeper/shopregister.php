@@ -68,7 +68,7 @@ if (isset($_POST['gregister'])) {
 						<div class="form-group">
 							<label for="exampleInputName" class="sr-only">Garage Owner Name</label>
 							<div class="position-relative has-icon-right">
-								<input type="text" class="form-control input-shadow" placeholder="Enter Owner Name" name="goname">
+								<input type="text" class="form-control input-shadow" placeholder="Enter Owner Name" name="goname" required="true">
 								<div class="form-control-position">
 									<i class="icon-user"></i>
 								</div>
@@ -77,7 +77,7 @@ if (isset($_POST['gregister'])) {
 						<div class="form-group">
 							<label for="exampleInputName" class="sr-only">Garage Name</label>
 							<div class="position-relative has-icon-right">
-								<input type="text" class="form-control input-shadow" placeholder="Enter Garage Name" name="gname">
+								<input type="text" class="form-control input-shadow" placeholder="Enter Garage Name" name="gname" required="true">
 								<div class="form-control-position">
 									<i class="icon-user"></i>
 								</div>
@@ -87,7 +87,7 @@ if (isset($_POST['gregister'])) {
 						<div class="form-group">
 							<label for="exampleInputEmailId" class="sr-only">Email ID</label>
 							<div class="position-relative has-icon-right">
-								<input type="email" class="form-control input-shadow" placeholder="Enter Owner Email ID" name="gemail">
+								<input type="email" class="form-control input-shadow" placeholder="Enter Owner Email ID" name="gemail" required="true">
 								<div class="form-control-position">
 									<i class="icon-envelope-open"></i>
 								</div>
@@ -97,7 +97,7 @@ if (isset($_POST['gregister'])) {
 						<div class="form-group">
 							<label for="exampleInputEmailId" class="sr-only">Phone Number</label>
 							<div class="position-relative has-icon-right">
-								<input type="text" class="form-control input-shadow" placeholder="Enter Contact Number" name="gphone">
+								<input type="text" class="form-control input-shadow" placeholder="Enter Contact Number" name="gphone" required="true">
 								<div class="form-control-position">
 									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tablet-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 										<path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
@@ -108,7 +108,7 @@ if (isset($_POST['gregister'])) {
 						<div class="form-group">
 							<label for="exampleInputEmailId" class="sr-only">Address</label>
 							<div class="position-relative has-icon-right">
-								<textarea id="exampleInputEmailId" height="50" class="form-control input-shadow" placeholder="Enter the address" name="gaddress"></textarea>
+								<textarea id="exampleInputEmailId" height="50" class="form-control input-shadow" placeholder="Enter the address" name="gaddress" required="true"></textarea>
 								<div class="form-control-position">
 									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-shop-window" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 										<path fill-rule="evenodd" d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h12V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zm2 .5a.5.5 0 0 1 .5.5V13h8V9.5a.5.5 0 0 1 1 0V13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a.5.5 0 0 1 .5-.5z" />
@@ -119,7 +119,7 @@ if (isset($_POST['gregister'])) {
 						<div class="form-group">
 							<label for="exampleInputEmailId" class="sr-only">Garage City</label>
 							<div class="position-relative has-icon-right">
-								<input type="text" class="form-control input-shadow" placeholder="Enter city" name="gcity">
+								<input type="text" class="form-control input-shadow" placeholder="Enter city" name="gcity" required="true">
 								<div class="form-control-position">
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
 										<path fill-rule="evenodd" d="M12.166 8.94C12.696 7.867 13 6.862 13 6A5 5 0 0 0 3 6c0 .862.305 1.867.834 2.94.524 1.062 1.234 2.12 1.96 3.07A31.481 31.481 0 0 0 8 14.58l.208-.22a31.493 31.493 0 0 0 1.998-2.35c.726-.95 1.436-2.008 1.96-3.07zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
@@ -132,7 +132,7 @@ if (isset($_POST['gregister'])) {
 						<div class="form-group">
 							<label for="exampleInputPassword" class="sr-only">Password</label>
 							<div class="position-relative has-icon-right">
-								<input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Choose Password" name="gpassword">
+								<input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Choose Password" name="gpassword" required="true">
 								<div class="form-control-position">
 									<i class="icon-lock"></i>
 								</div>

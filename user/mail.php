@@ -7,25 +7,7 @@
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
-
-
-    <link rel="stylesheet" href="ui/vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="ui/vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="ui/vendors/themify-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="ui/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="ui/vendors/selectFX/css/cs-skin-elastic.css">
-
-    <link rel="stylesheet" href="ui/assets/css/style.css">
-
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <?php include 'ui/csslink.php'; ?>
 </head>
 
 <body>
@@ -75,10 +57,7 @@
     <!-- Right Panel -->
 
 
-    <script src="ui/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="ui/vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="ui/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="ui/assets/js/main.js"></script>
+    <?php include 'ui/jslink.php'; ?>
 
 
 </body>

@@ -5,31 +5,35 @@ if (!$login) {
     echo "<script>window.location.href='login/login.php'; </script>";
 }
 date_default_timezone_set('Asia/Kolkata');
-$date=date("d-m-Y H:i:s");
-$vid=$_GET['vid'];
-$gid=$_GET['gid'];
-$user_query=mysqli_query($con,"SELECT * FROM user_info WHERE uid='$global_uid'");
-$user_info=mysqli_fetch_assoc($user_query);
-$garage_query=mysqli_query($con,"SELECT * FROM garage WHERE gid='$gid'");
-$garage_info=mysqli_fetch_assoc($garage_query);
-$vehicle_query=mysqli_query($con,"SELECT * FROM vehicle_info WHERE vid='$vid'");
-$vehicle_info=mysqli_fetch_assoc($vehicle_query);
-$vno=$vehicle_info['vno'];
-$vownername=$vehicle_info['vownername'];
-$sstatus=0;
-$gname=$garage_info['gname'];
-$gphone=$garage_info['gphone'];
-$uphone=$user_info['uphone'];
-$uemail=$user_info['uemail'];
-$scost=0;
-if(isset($_POST['submit'])){
-    $insert_service=mysqli_query($con,"INSERT INTO service_info (gid,vno,vownername,sstatus,gname,gphone,uphone,uid,sdate,uemail,scost) VALUES ('$gid','$vno','$vownername','$sstatus','$gname','$gphone','$uphone','$global_uid','$date','$uemail','$scost') ");
-    if($insert_service)
-    {
-        $smsg="Service Booked";
-    }
-    else{
-        $emsg="Error";
+$date = date("d-m-Y");
+$vid = $_GET['vid'];
+$gid = $_GET['gid'];
+$user_query = mysqli_query($con, "SELECT * FROM user_info WHERE uid='$global_uid'");
+$user_info = mysqli_fetch_assoc($user_query);
+$garage_query = mysqli_query($con, "SELECT * FROM garage WHERE gid='$gid'");
+$garage_info = mysqli_fetch_assoc($garage_query);
+$vehicle_query = mysqli_query($con, "SELECT * FROM vehicle_info WHERE vid='$vid'");
+$vehicle_info = mysqli_fetch_assoc($vehicle_query);
+$vno = $vehicle_info['vno'];
+$vownername = $vehicle_info['vownername'];
+$sstatus = 0;
+$rstatus = 0;
+$gname = $garage_info['gname'];
+$gphone = $garage_info['gphone'];
+$uphone = $user_info['uphone'];
+$uemail = $user_info['uemail'];
+$scost = 0;
+$rmsg = "0";
+$dflag="0";
+if (isset($_POST['submit'])) {
+    $dpick = $_POST['dpick'];
+    $ddrop = $_POST['ddrop'];
+    $insert_service = mysqli_query($con, "INSERT INTO service_info (gid,vno,vownername,sstatus,gname,gphone,uphone,uid,sdate,uemail,scost,rstatus,rmsg,dpick,ddrop,dflag) VALUES ('$gid','$vno','$vownername','$sstatus','$gname','$gphone','$uphone','$global_uid','$date','$uemail','$scost','$rstatus','$rmsg','$dpick','$ddrop','$dflag') ");
+    if ($insert_service) {
+        $smsg = "Service Request Registered Please wait for Garage to respond";
+        header("refresh:2;url=service-request-status.php");
+    } else {
+        $emsg = "Error";
     }
 }
 ?>
@@ -89,6 +93,20 @@ if(isset($_POST['submit'])){
                         <div class="row form-group">
                             <div class="col col-md-5"><label for="hf-email" class=" form-control-label"><b>Garage Address :</b></label></div>
                             <div class="col-12 col-md-5"><label id="hf-email" name="gaddress" class="form-control-label"><strong style="color:red;"><?php echo $garage_info['gaddress']; ?></strong></label></div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-5"><label for="hf-email" class=" form-control-label"><b>Door Pick-up :</b></label></div>
+                            <div class="col-12 col-md-5"><input type="radio" value="yes" class=" form-control-label" name="dpick">
+                                <font color="green"><b> Yes</b></font> <input value="no" type="radio" class=" form-control-label" name="dpick">
+                                <font color="red"><b> No</b></font>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-5"><label for="hf-email" class=" form-control-label"><b>Door Drop :</b></label></div>
+                            <div class="col-12 col-md-5"><input type="radio" value="yes" class=" form-control-label" name="ddrop">
+                                <font color="green"><b> Yes</b></font> <input value="no" type="radio" class=" form-control-label" name="ddrop">
+                                <font color="red"><b> No</b></font>
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer">

@@ -11,8 +11,7 @@ if (isset($_POST['updateprofile'])) {
     $uphone=$_POST['uphone'];
     $uaddress = $_POST['uaddress'];
     $ucity = $_POST['ucity'];
-    $upin = $_POST['upin'];
-    $update_query = mysqli_query($con, "UPDATE user_info SET uname='$uname',uemail='$uemail',uphone='$uphone',uaddress='$uaddress',ucity='$ucity',upin='$upin' WHERE uid='$global_uid'");
+    $update_query = mysqli_query($con, "UPDATE user_info SET uname='$uname',uemail='$uemail',uphone='$uphone',uaddress='$uaddress',ucity='$ucity' WHERE uid='$global_uid'");
     if ($update_query) {
         $smsg = "Profile Updated!!";
         header("refresh:1;url=user-profile.php");
@@ -101,10 +100,10 @@ if(isset($_POST['changepsw'])){
                                 <div class="col col-sm-5"><label for="input-small" class=" form-control-label">City </label></div>
                                 <div class="col col-sm-6"><input type="text" name="ucity" class="input-sm form-control-sm form-control" value="<?php echo  $record['ucity']; ?>"></div>
                             </div>
-                            <div class="row form-group">
+                            <!-- <div class="row form-group">
                                 <div class="col col-sm-5"><label for="input-small" class=" form-control-label">Pin </label></div>
                                 <div class="col col-sm-6"><input type="text" name="upin" class="input-sm form-control-sm form-control" value="<?php echo  $record['upin']; ?>"></div>
-                            </div>
+                            </div> -->
                             <hr width="100%" height="2px" color="black">
                             <div class="row form-group">
                                 <div class="col col-sm" style="color:red;"><span>(<i class="fa fa-info"></i>) If you want to change your profile details, provide the details in given text box's and press update button.</span></div>

@@ -3,7 +3,7 @@ include '../global/garageaccesscontrol.php';
 if (!$glogin) {
     echo "<script>window.location.href='shoplogin.php'; </script>";
 }
-$service_query = mysqli_query($con, "SELECT * FROM service_info WHERE gid='$global_gid'");
+$service_query = mysqli_query($con, "SELECT * FROM service_info WHERE rstatus=3 AND gid='$global_gid' AND sstatus=0");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +47,7 @@ $service_query = mysqli_query($con, "SELECT * FROM service_info WHERE gid='$glob
                                         <font style="color:white;">Customer Name</font> : <?php echo $service_info['vownername']; ?><br>
                                         <font style="color:white;">Vehicle Number</font> : <?php echo $service_info['vno']; ?><br>
                                         <font style="color:white;">Customer Phone</font> : <?php echo $service_info['uphone']; ?><br>
-                                        <font style="color:white;">Customer Name</font> : <?php echo $service_info['vownername']; ?>
+                                        <font style="color:white;">Service Keep Date</font> : <?php echo $service_info['sdate']; ?>
                                     </p>
                                     <a href="service-done.php?sid=<?php echo $service_info['sid']; ?>">
                                         <div class="icon-block">

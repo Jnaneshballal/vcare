@@ -61,7 +61,7 @@ if ($v_count >= 1) {
                                     $eedate = strtotime($info['vemissionexdate']);
                                     $diff = $eedate - $now;
                                     $dcount = round($diff / (60 * 60 * 24));
-                                    if($dcount<0){
+                                    if($dcount<=0){
                                         $dcount="Expired";
                                     }
                                     else{
@@ -70,7 +70,7 @@ if ($v_count >= 1) {
                                     $iedate = strtotime($info['vinsureexdate']);
                                     $idiff = $iedate - $now;
                                     $idcount = round($idiff / (60 * 60 * 24));
-                                    if($idcount<0){
+                                    if($idcount<=0){
                                         $idcount="Expired";
                                     }
                                     else{

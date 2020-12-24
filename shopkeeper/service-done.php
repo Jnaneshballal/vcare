@@ -12,7 +12,6 @@ if (isset($_POST['done'])) {
         $update_service = mysqli_query($con, "UPDATE service_info SET sstatus=1,scost='$scost' where sid='$sid'");
         if ($update_service) {
             $smsg = "Success";
-            header("refresh:1;url=customer.php");
         } else {
             $emsg = "Error!!";
         }
@@ -28,6 +27,9 @@ if (isset($_POST['done'])) {
 </head>
 
 <body class="bg-theme bg-theme1">
+    <?php
+
+    ?>
 
     <!-- Start wrapper-->
     <div id="wrapper">
@@ -73,14 +75,18 @@ if (isset($_POST['done'])) {
                                     <div class="icon-block">
                                         <button type="submit" class="btn btn-light btn-block waves-effect waves-light" name="done">Update</button>
                                     </div>
+
+                                    <a href="mail.php?sid=<?php echo $sid; ?>">
+                                        <div class="icon-block">
+                                            <button type="button" class="btn btn-light btn-block waves-effect waves-light">Done</button>
+                                        </div>
+                                    </a>
                                 </form>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <!--End wrapper-->

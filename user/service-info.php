@@ -4,7 +4,7 @@ if (!$login) {
     //if user not logged in
     echo "<script>window.location.href='login/login.php'; </script>";
 }
-$s_query = mysqli_query($con, "SELECT * FROM service_info WHERE uid='$global_uid'");
+$s_query = mysqli_query($con, "SELECT * FROM service_info WHERE uid='$global_uid' AND rstatus=3");
 
 ?>
 <!doctype html>
