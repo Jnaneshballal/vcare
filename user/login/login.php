@@ -85,7 +85,7 @@ if (isset($_POST['login'])) {
                             <label>Password</label>
                             <input type="password" class="form-control" placeholder="Password" name="psw" required="true">
                         </div>
-                        <div class="checkbox">
+                        <!-- <div class="checkbox">
                             <label>
                                 <input type="checkbox"> Remember Me
                             </label>
@@ -93,7 +93,7 @@ if (isset($_POST['login'])) {
                                 <a href="#">Forgotten Password?</a>
                             </label>
 
-                        </div>
+                        </div> -->
                         <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30" name="login">Sign in</button>
                         <!-- <div class="social-login-content">
                             <div class="social-button">
